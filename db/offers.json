@@ -1,0 +1,50 @@
+[
+  {
+    "id": "O-1",
+    "title": "Flat 50% Off — Weekday Lunch",
+    "type": "Flat",
+    "discount": "50%",
+    "restaurants": 124,
+    "startsAt": "2026-06-01",
+    "endsAt": "2026-07-15",
+    "active": true,
+    "_id": "ly9jt0r",
+    "createdAt": "2026-07-14T08:36:01.803Z"
+  },
+  {
+    "id": "O-2",
+    "title": "HDFC Bank — 15% Cashback",
+    "type": "Bank",
+    "discount": "15%",
+    "restaurants": 320,
+    "startsAt": "2026-05-20",
+    "endsAt": "2026-08-20",
+    "active": true,
+    "_id": "kq1jjdc",
+    "createdAt": "2026-07-14T08:36:01.803Z"
+  },
+  {
+    "id": "O-3",
+    "title": "1 + 1 on Cocktails",
+    "type": "BOGO",
+    "discount": "BOGO",
+    "restaurants": 47,
+    "startsAt": "2026-06-10",
+    "endsAt": "2026-06-30",
+    "active": true,
+    "_id": "0sadyid",
+    "createdAt": "2026-07-14T08:36:01.803Z"
+  },
+  {
+    "id": "O-4",
+    "title": "Weekend Brunch 25% Off",
+    "type": "Percent",
+    "discount": "25%",
+    "restaurants": 88,
+    "startsAt": "2026-04-01",
+    "endsAt": "2026-06-01",
+    "active": false,
+    "_id": "0ssclen",
+    "createdAt": "2026-07-14T08:36:01.803Z"
+  }
+]

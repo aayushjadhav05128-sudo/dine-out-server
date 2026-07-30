@@ -1,0 +1,42 @@
+[
+  {
+    "email": "admin@dinehub.com",
+    "password": "$2b$10$b541AeUDYGko3dNFnyZ9XeyEmtyK9nIMNRp1CDFE2eXWvtAUQNxNW",
+    "role": "admin",
+    "restaurantId": null,
+    "_id": "kk9pmps",
+    "createdAt": "2026-07-14T08:36:01.949Z"
+  },
+  {
+    "email": "owner1@vidyarthibhavan.com",
+    "password": "$2b$10$b541AeUDYGko3dNFnyZ9XeyEmtyK9nIMNRp1CDFE2eXWvtAUQNxNW",
+    "role": "owner",
+    "restaurantId": 1,
+    "_id": "bomr9c8",
+    "createdAt": "2026-07-14T08:36:01.949Z"
+  },
+  {
+    "email": "owner2@toit.com",
+    "password": "$2b$10$b541AeUDYGko3dNFnyZ9XeyEmtyK9nIMNRp1CDFE2eXWvtAUQNxNW",
+    "role": "owner",
+    "restaurantId": 2,
+    "_id": "9o41r0n",
+    "createdAt": "2026-07-14T08:36:01.949Z"
+  },
+  {
+    "email": "owner3@truffles.com",
+    "password": "$2b$10$b541AeUDYGko3dNFnyZ9XeyEmtyK9nIMNRp1CDFE2eXWvtAUQNxNW",
+    "role": "owner",
+    "restaurantId": 3,
+    "_id": "aqlxsf5",
+    "createdAt": "2026-07-14T08:36:01.949Z"
+  },
+  {
+    "email": "aayushjadhav05128@gmail.com",
+    "password": "$2b$10$4Euix4k06jAFK5cH9jQCt.bAWw8lr9bZo1oj.yCMVwYpRrAyfmKjC",
+    "role": "admin",
+    "restaurantId": null,
+    "_id": "kfsn3fl",
+    "createdAt": "2026-07-14T09:08:23.902Z"
+  }
+]

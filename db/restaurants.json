@@ -1,0 +1,1940 @@
+[
+  {
+    "id": 1,
+    "name": "Vidyarthi Bhavan",
+    "cuisine": "South Indian Breakfast",
+    "location": "Gandhi Bazaar, Basavanagudi, Bengaluru",
+    "distanceKm": 2.5,
+    "rating": 4.5,
+    "reviews": 4850,
+    "priceForTwo": 200,
+    "image_url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop",
+    "category": "family",
+    "offer_text": "Flat 15% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A legendary heritage vegetarian restaurant, famous for its crispy and thick Masala Dosa, filter coffee, and iconic bustling atmosphere.",
+    "menuItems": [
+      {
+        "name": "Tandoori Chicken Platter",
+        "price": 480,
+        "description": "Classic spiced yogurt marinade, clay oven roasted",
+        "image_url": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Paneer Butter Masala",
+        "price": 320,
+        "description": "Cottage cheese cubes in rich tomato gravy",
+        "image_url": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Dal Makhani Classic",
+        "price": 260,
+        "description": "Slow-cooked black lentils, fresh cream, butter",
+        "image_url": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Butter Naan Basket",
+        "price": 120,
+        "description": "Freshly baked clay oven flatbreads with butter",
+        "image_url": "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Gulab Jamun (2 Pcs)",
+        "price": 90,
+        "description": "Warm milk dumplings in cardamom sugar syrup",
+        "image_url": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 12.9439,
+    "longitude": 77.5738,
+    "status": "approved",
+    "revenue": 125000,
+    "_id": "17epb5d",
+    "createdAt": "2026-07-14T08:36:01.795Z"
+  },
+  {
+    "id": 2,
+    "name": "Toit Brewpub",
+    "cuisine": "Microbrewery • Italian • American",
+    "location": "100 Feet Rd, Indiranagar, Bengaluru",
+    "distanceKm": 6.8,
+    "rating": 4.6,
+    "reviews": 12450,
+    "priceForTwo": 2000,
+    "image_url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=800&auto=format&fit=crop",
+    "category": "bar",
+    "offer_text": "Flat 20% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1574096079513-d8259312b785?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "Bengaluru's favorite microbrewery offering world-class craft beers, wood-fired pizzas, and a lively, pet-friendly atmosphere.",
+    "menuItems": [
+      {
+        "name": "Crispy Onion Rings",
+        "price": 180,
+        "description": "Beer-battered giant onion rings, chipotle dip",
+        "image_url": "https://images.unsplash.com/photo-1639024471283-2bc7a3c75015?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Loaded Potato Skins",
+        "price": 220,
+        "description": "Crispy skins stuffed with bacon, cheddar, sour cream",
+        "image_url": "https://images.unsplash.com/photo-1518013006361-de18b39d48b1?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Beer Pitcher",
+        "price": 490,
+        "description": "Freshly brewed draft beer, cold & crisp",
+        "image_url": "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Spicy Chicken Wings",
+        "price": 290,
+        "description": "Tossed in hot buffalo sauce, celery sticks",
+        "image_url": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Cheesy Beef Sliders",
+        "price": 340,
+        "description": "Mini beef patties, cheddar, caramelized onions",
+        "image_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 12.9791,
+    "longitude": 77.6408,
+    "status": "approved",
+    "revenue": 480420,
+    "_id": "qjzow9x",
+    "createdAt": "2026-07-14T08:36:01.797Z",
+    "pending_commission": 2100
+  },
+  {
+    "id": 3,
+    "name": "Truffles",
+    "cuisine": "Burgers • Continental • Fast Food",
+    "location": "Koramangala 5th Block, Bengaluru",
+    "distanceKm": 4.2,
+    "rating": 4.4,
+    "reviews": 9540,
+    "priceForTwo": 900,
+    "image_url": "https://images.unsplash.com/photo-1571066811602-71683a3f680d?q=80&w=800&auto=format&fit=crop",
+    "category": "fast-food",
+    "offer_text": "Flat 25% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1571066811602-71683a3f680d?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "Known for serving some of the best monster-sized burgers, steaks, and decadent milkshakes in Bengaluru.",
+    "menuItems": [
+      {
+        "name": "Double Cheese Burger",
+        "price": 210,
+        "description": "Two flame-grilled beef/chicken patties, melted cheese",
+        "image_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Crispy French Fries",
+        "price": 99,
+        "description": "Perfectly salted thin-cut golden fries",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Spicy Chicken Wrapper",
+        "price": 150,
+        "description": "Crispy chicken tenders, lettuce, mayo in flatbread",
+        "image_url": "https://images.unsplash.com/photo-1626700051175-6518c4793fde?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Chocolate Milkshake",
+        "price": 120,
+        "description": "Creamy vanilla ice cream blended with rich cocoa",
+        "image_url": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Crunchy Onion Rings",
+        "price": 110,
+        "description": "Deep fried breaded sweet onions",
+        "image_url": "https://images.unsplash.com/photo-1639024471283-2bc7a3c75015?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 12.9335,
+    "longitude": 77.6143,
+    "status": "approved",
+    "revenue": 350000,
+    "_id": "ltadpr0",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 4,
+    "name": "Mavalli Tiffin Room (MTR)",
+    "cuisine": "Legendary Heritage South Indian",
+    "location": "Lal Bagh Main Rd, Mavalli, Bengaluru",
+    "distanceKm": 1.5,
+    "rating": 4.5,
+    "reviews": 6300,
+    "priceForTwo": 400,
+    "image_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop",
+    "category": "family",
+    "offer_text": "Flat 10% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "Established in 1924, MTR is an iconic institution, famous for inventing the Rava Idli during WWII and serving authentic, multi-course Karnataka meals.",
+    "menuItems": [
+      {
+        "name": "Tandoori Chicken Platter",
+        "price": 480,
+        "description": "Classic spiced yogurt marinade, clay oven roasted",
+        "image_url": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Paneer Butter Masala",
+        "price": 320,
+        "description": "Cottage cheese cubes in rich tomato gravy",
+        "image_url": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Dal Makhani Classic",
+        "price": 260,
+        "description": "Slow-cooked black lentils, fresh cream, butter",
+        "image_url": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Butter Naan Basket",
+        "price": 120,
+        "description": "Freshly baked clay oven flatbreads with butter",
+        "image_url": "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Gulab Jamun (2 Pcs)",
+        "price": 90,
+        "description": "Warm milk dumplings in cardamom sugar syrup",
+        "image_url": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 12.9554,
+    "longitude": 77.5861,
+    "status": "approved",
+    "revenue": 180000,
+    "_id": "9ssh5tc",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 5,
+    "name": "Karavalli",
+    "cuisine": "Coastal South Indian & Seafood",
+    "location": "Residency Rd, Shanthala Nagar, Bengaluru",
+    "distanceKm": 3.1,
+    "rating": 4.7,
+    "reviews": 3200,
+    "priceForTwo": 3500,
+    "image_url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop",
+    "category": "fine-dining",
+    "offer_text": "Flat 15% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "Nestled in Vivanta Bengaluru, Karavalli replicates a traditional coastal home, serving fine seafood curries, Malabar parottas, and coastal specialties.",
+    "menuItems": [
+      {
+        "name": "Truffle Infused Filet Mignon",
+        "price": 1250,
+        "description": "Prime tenderloin, truffle butter, red wine reduction",
+        "image_url": "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Seared Atlantic Salmon",
+        "price": 950,
+        "description": "Crispy skin salmon, lemon herb butter, wild rice",
+        "image_url": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Wild Mushroom Risotto",
+        "price": 680,
+        "description": "Arborio rice, porcini mushrooms, parmigiano reggiano",
+        "image_url": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Burrata Caprese Salad",
+        "price": 480,
+        "description": "Fresh burrata, heirloom tomatoes, basil pesto",
+        "image_url": "https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Crème Brûlée",
+        "price": 350,
+        "description": "Rich custard base, hardened caramelized sugar topper",
+        "image_url": "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 12.9701,
+    "longitude": 77.6078,
+    "status": "approved",
+    "revenue": 720000,
+    "_id": "wp8i8pr",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 6,
+    "name": "The Bombay Canteen",
+    "cuisine": "Progressive Modern Indian",
+    "location": "Kamala Mills Compound, Lower Parel, Mumbai",
+    "distanceKm": 0.1,
+    "rating": 4.6,
+    "reviews": 8400,
+    "priceForTwo": 2400,
+    "image_url": "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+    "category": "fine-dining",
+    "offer_text": "Flat 20% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "An award-winning restaurant celebrating India's diverse culinary culture with local, seasonal ingredients reinterpreted in modern ways.",
+    "menuItems": [
+      {
+        "name": "Truffle Infused Filet Mignon",
+        "price": 1250,
+        "description": "Prime tenderloin, truffle butter, red wine reduction",
+        "image_url": "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Seared Atlantic Salmon",
+        "price": 950,
+        "description": "Crispy skin salmon, lemon herb butter, wild rice",
+        "image_url": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Wild Mushroom Risotto",
+        "price": 680,
+        "description": "Arborio rice, porcini mushrooms, parmigiano reggiano",
+        "image_url": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Burrata Caprese Salad",
+        "price": 480,
+        "description": "Fresh burrata, heirloom tomatoes, basil pesto",
+        "image_url": "https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Crème Brûlée",
+        "price": 350,
+        "description": "Rich custard base, hardened caramelized sugar topper",
+        "image_url": "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0027,
+    "longitude": 72.8299,
+    "status": "approved",
+    "revenue": 550000,
+    "_id": "azxkx90",
+    "createdAt": "2026-07-14T08:36:01.797Z",
+    "pending_commission": 0
+  },
+  {
+    "id": 7,
+    "name": "Leopold Cafe",
+    "cuisine": "Multi-cuisine • Historic Cafe • Pub",
+    "location": "Colaba Causeway, Colaba, Mumbai",
+    "distanceKm": 8.5,
+    "rating": 4.2,
+    "reviews": 14500,
+    "priceForTwo": 1400,
+    "image_url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 10% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "Established in 1871, Leopold Cafe is an iconic historic pub and multi-cuisine restaurant, popular for its legacy, cold beer, and energetic vibe.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 18.9222,
+    "longitude": 72.8316,
+    "status": "approved",
+    "revenue": 290000,
+    "_id": "z2r3h5a",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 8,
+    "name": "Britannia & Co. Restaurant",
+    "cuisine": "Parsi / Iranian Classics",
+    "location": "Ballard Estate, Fort, Mumbai",
+    "distanceKm": 7.2,
+    "rating": 4.3,
+    "reviews": 5800,
+    "priceForTwo": 1000,
+    "image_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop",
+    "category": "family",
+    "offer_text": "Flat 15% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "Housed in a grand Renaissance-style building, Britannia is a legendary Parsi-Iranian cafe, famous for its secret-recipe Berry Pulav.",
+    "menuItems": [
+      {
+        "name": "Tandoori Chicken Platter",
+        "price": 480,
+        "description": "Classic spiced yogurt marinade, clay oven roasted",
+        "image_url": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Paneer Butter Masala",
+        "price": 320,
+        "description": "Cottage cheese cubes in rich tomato gravy",
+        "image_url": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Dal Makhani Classic",
+        "price": 260,
+        "description": "Slow-cooked black lentils, fresh cream, butter",
+        "image_url": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Butter Naan Basket",
+        "price": 120,
+        "description": "Freshly baked clay oven flatbreads with butter",
+        "image_url": "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Gulab Jamun (2 Pcs)",
+        "price": 90,
+        "description": "Warm milk dumplings in cardamom sugar syrup",
+        "image_url": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 18.9321,
+    "longitude": 72.839,
+    "status": "approved",
+    "revenue": 210000,
+    "_id": "9fvllll",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 9,
+    "name": "Farzi Cafe",
+    "cuisine": "Modern Indian Bistro",
+    "location": "UB City, Lavelle Road, Bengaluru",
+    "distanceKm": 1.8,
+    "rating": 4.3,
+    "reviews": 3200,
+    "priceForTwo": 1800,
+    "image_url": "https://images.unsplash.com/photo-1567896856233-0498b50f7572?q=80&w=600",
+    "category": "fine-dining",
+    "offer_text": "Flat 20% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1567896856233-0498b50f7572?q=80&w=600"
+    ],
+    "about": "A gourmet experience combining molecular gastronomy and traditional Indian dishes.",
+    "menuItems": [
+      {
+        "name": "Truffle Infused Filet Mignon",
+        "price": 1250,
+        "description": "Prime tenderloin, truffle butter, red wine reduction",
+        "image_url": "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Seared Atlantic Salmon",
+        "price": 950,
+        "description": "Crispy skin salmon, lemon herb butter, wild rice",
+        "image_url": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Wild Mushroom Risotto",
+        "price": 680,
+        "description": "Arborio rice, porcini mushrooms, parmigiano reggiano",
+        "image_url": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Burrata Caprese Salad",
+        "price": 480,
+        "description": "Fresh burrata, heirloom tomatoes, basil pesto",
+        "image_url": "https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Crème Brûlée",
+        "price": 350,
+        "description": "Rich custard base, hardened caramelized sugar topper",
+        "image_url": "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 12.9719,
+    "longitude": 77.5968,
+    "status": "rejected",
+    "revenue": 0,
+    "_id": "fbtakio",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 10,
+    "name": "Social",
+    "cuisine": "Continental • Fusion • Bar",
+    "location": "Church Street, Bengaluru",
+    "distanceKm": 2,
+    "rating": 4.4,
+    "reviews": 8400,
+    "priceForTwo": 1500,
+    "image_url": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=800&auto=format&fit=crop",
+    "category": "bar",
+    "offer_text": "Flat 10% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1574096079513-d8259312b785?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A collaborative workspace and high-energy bar offering quirky street food and drinks.",
+    "menuItems": [
+      {
+        "name": "Crispy Onion Rings",
+        "price": 180,
+        "description": "Beer-battered giant onion rings, chipotle dip",
+        "image_url": "https://images.unsplash.com/photo-1639024471283-2bc7a3c75015?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Loaded Potato Skins",
+        "price": 220,
+        "description": "Crispy skins stuffed with bacon, cheddar, sour cream",
+        "image_url": "https://images.unsplash.com/photo-1518013006361-de18b39d48b1?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Beer Pitcher",
+        "price": 490,
+        "description": "Freshly brewed draft beer, cold & crisp",
+        "image_url": "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Spicy Chicken Wings",
+        "price": 290,
+        "description": "Tossed in hot buffalo sauce, celery sticks",
+        "image_url": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Cheesy Beef Sliders",
+        "price": 340,
+        "description": "Mini beef patties, cheddar, caramelized onions",
+        "image_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 12.9752,
+    "longitude": 77.6009,
+    "status": "approved",
+    "revenue": 340000,
+    "_id": "mbjzimj",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 31,
+    "name": "Maison De Café",
+    "cuisine": "Continental, Bakery, Gourmet Beverages",
+    "location": "Nerul (Courtyard by Marriott), Navi Mumbai",
+    "distanceKm": 1.4,
+    "rating": 4.4,
+    "reviews": 210,
+    "priceForTwo": 1200,
+    "image_url": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 10% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A luxury cafe experience offering artisanal coffees, handcrafted croissants, and gourmet continental dishes inside Courtyard by Marriott.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.031,
+    "longitude": 73.018,
+    "status": "approved",
+    "revenue": 95000,
+    "_id": "nn0tu3k",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 32,
+    "name": "Aromas Cafe & Bistro",
+    "cuisine": "Italian, Continental, Bistro Comfort Food",
+    "location": "Seawoods (Nexus Seawoods Mall), Navi Mumbai",
+    "distanceKm": 1.1,
+    "rating": 4.3,
+    "reviews": 1420,
+    "priceForTwo": 1500,
+    "image_url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 15% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "An elegant bistro serving excellent Italian wood-fired pizzas, rich risottos, and indulgent desserts.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0193,
+    "longitude": 73.0183,
+    "status": "approved",
+    "revenue": 160000,
+    "_id": "31fuzzx",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 33,
+    "name": "Earth Soul Cafe",
+    "cuisine": "Healthy Food, Vegan, Organic Continental",
+    "location": "CBD Belapur (Sector 11), Navi Mumbai",
+    "distanceKm": 2.2,
+    "rating": 4.4,
+    "reviews": 180,
+    "priceForTwo": 1100,
+    "image_url": "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 20% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A beautiful green space offering delicious gluten-free, organic, and health-focused meals.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0222,
+    "longitude": 73.0428,
+    "status": "approved",
+    "revenue": 42000,
+    "_id": "8o8yx8z",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 34,
+    "name": "Communion Cafe",
+    "cuisine": "Specialty Coffee, European Breakfast, Sandwiches",
+    "location": "CBD Belapur (Sector 15), Navi Mumbai",
+    "distanceKm": 2.4,
+    "rating": 4.5,
+    "reviews": 310,
+    "priceForTwo": 1000,
+    "image_url": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 15% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A specialty coffee roastery and bakery, famous for European-style breakfast spreads and pour-overs.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.024,
+    "longitude": 73.0445,
+    "status": "approved",
+    "revenue": 68000,
+    "_id": "wvkstjr",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 35,
+    "name": "Olde Baileys Cafe",
+    "cuisine": "Italian, Continental Cafe Bites",
+    "location": "Seawoods (Nexus Grand Central Mall), Navi Mumbai",
+    "distanceKm": 1.1,
+    "rating": 4.2,
+    "reviews": 620,
+    "priceForTwo": 1300,
+    "image_url": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 20% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A grand, vintage-themed cafe serving classic Italian paninis, thick creamy frappes, and fresh desserts.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0196,
+    "longitude": 73.0187,
+    "status": "approved",
+    "revenue": 85000,
+    "_id": "jkf5qvs",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 36,
+    "name": "Brew House Cafe",
+    "cuisine": "Continental Cafe Fare, Burgers, Beers",
+    "location": "CBD Belapur (Sector 15), Navi Mumbai",
+    "distanceKm": 2.5,
+    "rating": 4.3,
+    "reviews": 840,
+    "priceForTwo": 1400,
+    "image_url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 10% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A casual hang-out spot with wood-fired pizzas, hearty burgers, frappes, and chilled draught craft beers.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0245,
+    "longitude": 73.0448,
+    "status": "approved",
+    "revenue": 110000,
+    "_id": "qbj278b",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 37,
+    "name": "Love & Latte",
+    "cuisine": "Beverages, Continental Snacks, Desserts",
+    "location": "Nerul (Sector 21), Navi Mumbai",
+    "distanceKm": 1.8,
+    "rating": 4.1,
+    "reviews": 320,
+    "priceForTwo": 800,
+    "image_url": "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 15% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A relaxing cafe to read a book or catch up, serving Hazelnut Cappuccinos, omelettes, and waffles.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0388,
+    "longitude": 73.0248,
+    "status": "approved",
+    "revenue": 52000,
+    "_id": "xm1c4bd",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 38,
+    "name": "Cafe Monza",
+    "cuisine": "Continental, All-day Breakfast",
+    "location": "CBD Belapur (Sector 11), Navi Mumbai",
+    "distanceKm": 2.1,
+    "rating": 4.4,
+    "reviews": 980,
+    "priceForTwo": 1200,
+    "image_url": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 20% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "Known for its outstanding all-day breakfast plates, fluffy pancakes, and excellent coffee drinks.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0228,
+    "longitude": 73.042,
+    "status": "approved",
+    "revenue": 120000,
+    "_id": "b4y73mz",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 39,
+    "name": "Cafe Sacro",
+    "cuisine": "Italian, Mexican, Fast Food",
+    "location": "Nerul (Haware Centurion Mall), Navi Mumbai",
+    "distanceKm": 1.4,
+    "rating": 4.2,
+    "reviews": 290,
+    "priceForTwo": 900,
+    "image_url": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 25% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A modern fast-food dining space serving excellent baked lasagnas, cheesy tacos, and vibrant mocktails.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0345,
+    "longitude": 73.022,
+    "status": "approved",
+    "revenue": 65000,
+    "_id": "4ef446t",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 40,
+    "name": "Suto Cafe",
+    "cuisine": "Quick Bites, Coffee, Fast Food",
+    "location": "Nerul East, Navi Mumbai",
+    "distanceKm": 1.6,
+    "rating": 4.1,
+    "reviews": 140,
+    "priceForTwo": 600,
+    "image_url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 15% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A casual pocket-friendly hangout spot popular for Maggi variations, double-decker sandwiches, and coffee.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.036,
+    "longitude": 73.026,
+    "status": "approved",
+    "revenue": 40000,
+    "_id": "pllnb6v",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 41,
+    "name": "The Bombay Snacks Cafe",
+    "cuisine": "Fast Food, Local Quick Snacks",
+    "location": "Seawoods (Sector 23), Navi Mumbai",
+    "distanceKm": 1.3,
+    "rating": 4.3,
+    "reviews": 480,
+    "priceForTwo": 500,
+    "image_url": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 10% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A quirky cafe serving authentic Mumbai street snacks, piping-hot Filter Coffee, and Bun Maskas.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.015,
+    "longitude": 73.011,
+    "status": "approved",
+    "revenue": 55000,
+    "_id": "e4oci90",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 42,
+    "name": "Chai Sutta Bar",
+    "cuisine": "Tea Variations, Fast Food Snacks",
+    "location": "CBD Belapur (Sector 15), Navi Mumbai",
+    "distanceKm": 2.3,
+    "rating": 4.2,
+    "reviews": 1250,
+    "priceForTwo": 400,
+    "image_url": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 20% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A highly popular youth hotspot serving tea in earthen clay cups (Kullhad) and delicious bites.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0235,
+    "longitude": 73.0435,
+    "status": "approved",
+    "revenue": 72000,
+    "_id": "34s4lx8",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 43,
+    "name": "Cafe Chocolicious",
+    "cuisine": "Desserts, Shakes, Quick Bites",
+    "location": "CBD Belapur (Sector 15), Navi Mumbai",
+    "distanceKm": 2.4,
+    "rating": 4.3,
+    "reviews": 350,
+    "priceForTwo": 700,
+    "image_url": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 15% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A chocolate lover's dream destination, serving rich chocolate waffles, thick shakes, and quick savory bites.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0236,
+    "longitude": 73.0438,
+    "status": "approved",
+    "revenue": 55000,
+    "_id": "o28ye1h",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 44,
+    "name": "Theobroma",
+    "cuisine": "Bakery, Desserts, Patisserie",
+    "location": "Nerul (Sector 19), Navi Mumbai",
+    "distanceKm": 1.7,
+    "rating": 4.5,
+    "reviews": 1850,
+    "priceForTwo": 800,
+    "image_url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 10% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "India's favorite patisserie chain, famous for its legendary Overload Brownies, cakes, and fresh red velvet slices.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0375,
+    "longitude": 73.0215,
+    "status": "approved",
+    "revenue": 140000,
+    "_id": "gk44bb3",
+    "createdAt": "2026-07-14T08:36:01.797Z"
+  },
+  {
+    "id": 45,
+    "name": "Starbucks",
+    "cuisine": "Coffee, Bakery, Fast Food",
+    "location": "Seawoods (Nexus Seawoods Mall), Navi Mumbai",
+    "distanceKm": 1.2,
+    "rating": 4.4,
+    "reviews": 2150,
+    "priceForTwo": 900,
+    "image_url": "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 15% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "The premier global roaster and retailer of specialty coffee, serving Java Chips, custom lattes, and fresh paninis.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.019,
+    "longitude": 73.0181,
+    "status": "approved",
+    "revenue": 250000,
+    "_id": "mitwwwa",
+    "createdAt": "2026-07-14T08:36:01.798Z"
+  },
+  {
+    "id": 46,
+    "name": "Bell Peppers Cafe",
+    "cuisine": "Continental Italian, Cafe Fast Food",
+    "location": "Seawoods (Sector 40), Navi Mumbai",
+    "distanceKm": 0.8,
+    "rating": 4.1,
+    "reviews": 210,
+    "priceForTwo": 950,
+    "image_url": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 20% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A casual spot serving excellent Italian pizzas, hand-pressed paninis, and refreshing fruit granitas.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0178,
+    "longitude": 73.0165,
+    "status": "approved",
+    "revenue": 55000,
+    "_id": "8ahxicu",
+    "createdAt": "2026-07-14T08:36:01.798Z"
+  },
+  {
+    "id": 47,
+    "name": "Chai Vaai Cafe",
+    "cuisine": "Beverages, Quick Bites",
+    "location": "Nerul (Sector 19), Navi Mumbai",
+    "distanceKm": 1.7,
+    "rating": 4.2,
+    "reviews": 310,
+    "priceForTwo": 500,
+    "image_url": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 15% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A relaxing and cozy neighborhood cafe serving local Elaichi tea, cheese toasts, and thick milkshakes.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0373,
+    "longitude": 73.021,
+    "status": "approved",
+    "revenue": 43000,
+    "_id": "j7cakfv",
+    "createdAt": "2026-07-14T08:36:01.798Z"
+  },
+  {
+    "id": 48,
+    "name": "Cafe H & W Share The Secrets",
+    "cuisine": "Fast Food, Desserts",
+    "location": "Seawoods (Sector 44), Navi Mumbai",
+    "distanceKm": 0.9,
+    "rating": 4.3,
+    "reviews": 160,
+    "priceForTwo": 700,
+    "image_url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 10% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A funky fast-food spot, famous for its signature dessert Chocolate Shawarma and supreme double-decker burgers.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0165,
+    "longitude": 73.0145,
+    "status": "approved",
+    "revenue": 38000,
+    "_id": "ad9gela",
+    "createdAt": "2026-07-14T08:36:01.798Z"
+  },
+  {
+    "id": 49,
+    "name": "Vintage Coffee",
+    "cuisine": "Cafe Fast Food, Desserts",
+    "location": "Nerul (Sector 11), Navi Mumbai",
+    "distanceKm": 1.3,
+    "rating": 4.1,
+    "reviews": 240,
+    "priceForTwo": 750,
+    "image_url": "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 20% OFF",
+    "trending": false,
+    "gallery": [
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "A retro-designed cafe serving classic cold coffee loaded with ice cream, savory paneer wraps, and brownies.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0325,
+    "longitude": 73.02,
+    "status": "approved",
+    "revenue": 51000,
+    "_id": "1t9n5xg",
+    "createdAt": "2026-07-14T08:36:01.798Z"
+  },
+  {
+    "id": 50,
+    "name": "Cafe Recycled",
+    "cuisine": "Continental, Quick Bites",
+    "location": "CBD Belapur (Sector 15), Navi Mumbai",
+    "distanceKm": 2.5,
+    "rating": 4.4,
+    "reviews": 420,
+    "priceForTwo": 1000,
+    "image_url": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+    "category": "cafe",
+    "offer_text": "Flat 15% OFF",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "An environmentally conscious themed cafe, popular for crispy fried chicken wings, loaded cheesy fries, and oreo shakes.",
+    "menuItems": [
+      {
+        "name": "Artisanal Avocado Toast",
+        "price": 280,
+        "description": "Smashed avocado, cherry tomatoes, sourdough",
+        "image_url": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Iced Latte",
+        "price": 190,
+        "description": "Double espresso shot, cold milk, vanilla syrup",
+        "image_url": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Smoked Chicken Croissant",
+        "price": 240,
+        "description": "Buttery croissant, smoked chicken, lettuce",
+        "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic Blueberry Cheesecake",
+        "price": 210,
+        "description": "New York style cheesecake, sweet blueberry compote",
+        "image_url": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Truffle Fries with Aioli",
+        "price": 180,
+        "description": "Crispy golden fries tossed in truffle oil",
+        "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0241,
+    "longitude": 73.044,
+    "status": "approved",
+    "revenue": 95000,
+    "_id": "ic5j4cr",
+    "createdAt": "2026-07-14T08:36:01.798Z"
+  },
+  {
+    "id": 999,
+    "name": "AntiGravity",
+    "cuisine": "Pub Fare, American Finger Food, Drinks",
+    "location": "CBD Belapur (Sector 11)",
+    "distanceKm": 2.1,
+    "rating": 4.8,
+    "reviews": 1450,
+    "priceForTwo": 1800,
+    "image_url": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=800&auto=format&fit=crop",
+    "category": "nightlife",
+    "offer_text": "Pre-Book 50% Off Slot",
+    "trending": true,
+    "gallery": [
+      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1574096079513-d8259312b785?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?q=80&w=800&auto=format&fit=crop"
+    ],
+    "about": "AntiGravity's high-energy interior features futuristic geometric LED installations, a backlit island bar, and moody velvet booth seating. Ideal for a premium nightlife experience.",
+    "menuItems": [
+      {
+        "name": "Fiery Peri Peri Wings",
+        "price": 360,
+        "description": "Tossed in spicy peri peri glaze",
+        "image_url": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Loaded Cheese Nachos",
+        "price": 290,
+        "description": "Tortilla chips, melted cheese, salsa, sour cream",
+        "image_url": "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Signature Craft Cocktail",
+        "price": 450,
+        "description": "In-house custom gin & tonic botanicals infusion",
+        "image_url": "https://images.unsplash.com/photo-1574096079513-d8259312b785?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Crispy Chicken Tenders",
+        "price": 320,
+        "description": "Served with honey mustard sauce",
+        "image_url": "https://images.unsplash.com/photo-1562967916-eb82221dfb92?q=80&w=400&auto=format&fit=crop"
+      },
+      {
+        "name": "Classic LIIT Pitcher",
+        "price": 890,
+        "description": "Long Island Iced Tea batch blend",
+        "image_url": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=400&auto=format&fit=crop"
+      }
+    ],
+    "latitude": 19.0145,
+    "longitude": 73.041,
+    "status": "approved",
+    "revenue": 120000,
+    "_id": "5o5hjn9",
+    "createdAt": "2026-07-14T08:36:01.798Z"
+  },
+  {
+    "id": 1000,
+    "name": "Aayush Jadhav's Restaurant",
+    "cuisine": "Fusion Delight",
+    "location": "Bengaluru, India",
+    "rating": 4,
+    "distanceKm": 1.5,
+    "reviews": 0,
+    "priceForTwo": 600,
+    "image_url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800",
+    "category": "fine-dining",
+    "about": "Welcome to Aayush Jadhav's Restaurant! Configure your menu catalog, manage layouts, and track settlements here.",
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "status": "approved",
+    "revenue": 0,
+    "_id": "8r3wlq8",
+    "createdAt": "2026-07-14T09:08:23.825Z"
+  },
+  {
+    "id": 1001,
+    "name": "Vilas Bistro",
+    "location": "Bengaluru",
+    "cuisine": "Continental, Multi-Cuisine",
+    "phone": "+91 9876543210",
+    "email": "owner@vilasbistro.com",
+    "status": "approved",
+    "_id": "2mr8wim",
+    "createdAt": "2026-07-25T07:58:12.424Z"
+  },
+  {
+    "id": 1002,
+    "name": "temptation",
+    "location": "nerul",
+    "cuisine": "Continental, Multi-Cuisine",
+    "phone": "9136963301",
+    "email": "aayushjadhav05128@gmail.com",
+    "status": "approved",
+    "_id": "d7tgmyw",
+    "createdAt": "2026-07-25T09:02:11.021Z"
+  },
+  {
+    "id": 1003,
+    "name": "Test Cafe 1785312155213",
+    "location": "Bengaluru",
+    "cuisine": "Continental, Multi-Cuisine",
+    "phone": "+91 99999 88888",
+    "email": "testcafe@example.com",
+    "status": "approved",
+    "_id": "wxmw8r0",
+    "createdAt": "2026-07-29T08:02:35.228Z"
+  },
+  {
+    "id": 1004,
+    "name": "Test Cafe 1785312216918",
+    "location": "Bengaluru",
+    "cuisine": "Continental, Multi-Cuisine",
+    "phone": "+91 99999 88888",
+    "email": "testcafe@example.com",
+    "status": "approved",
+    "_id": "3xbb11m",
+    "createdAt": "2026-07-29T08:03:36.937Z"
+  },
+  {
+    "id": 1005,
+    "name": "temptation",
+    "location": "Nerul Navi Mumbai",
+    "cuisine": "Continental, Multi-Cuisine",
+    "phone": "+919321076804",
+    "email": "aayushjadhav05128@gmail.com",
+    "status": "approved",
+    "_id": "js1uw2i",
+    "createdAt": "2026-07-29T08:04:53.079Z"
+  },
+  {
+    "id": "6374",
+    "name": "Smoke House Deli (Onboarded #6374)",
+    "cuisine": "Modern Fusion",
+    "location": "Indiranagar, Bengaluru",
+    "rating": 4.2,
+    "reviews": 120,
+    "priceForTwo": 1200,
+    "image_url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600",
+    "category": "fine-dining",
+    "offer_text": "Flat 20% OFF",
+    "trending": false,
+    "status": "approved",
+    "revenue": 0,
+    "about": "A beautiful newly onboarded restaurant partner.",
+    "_id": "ihcp2so",
+    "createdAt": "2026-07-29T08:05:17.726Z"
+  },
+  {
+    "id": "6351",
+    "name": "Social (Onboarded #6351)",
+    "cuisine": "Modern Fusion",
+    "location": "Indiranagar, Bengaluru",
+    "rating": 4.2,
+    "reviews": 120,
+    "priceForTwo": 1200,
+    "image_url": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600",
+    "category": "fine-dining",
+    "offer_text": "Flat 20% OFF",
+    "trending": false,
+    "status": "pending",
+    "revenue": 0,
+    "about": "A beautiful newly onboarded restaurant partner.",
+    "_id": "ddem2uo",
+    "createdAt": "2026-07-29T08:06:33.272Z"
+  }
+]

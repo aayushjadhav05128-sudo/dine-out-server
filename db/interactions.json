@@ -1,0 +1,233 @@
+[
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 1,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.270Z",
+    "_id": "700ns1v"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 2,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.272Z",
+    "_id": "rlxzzsz"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 3,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.273Z",
+    "_id": "ab9hfm8"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 4,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.274Z",
+    "_id": "ykntuoa"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 5,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.275Z",
+    "_id": "k78egh4"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 6,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.276Z",
+    "_id": "mdpqbcn"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 7,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.277Z",
+    "_id": "pys2iwy"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 8,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.278Z",
+    "_id": "uaanwl1"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 10,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.278Z",
+    "_id": "24mhha3"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 31,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.279Z",
+    "_id": "nchcnl4"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 32,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.280Z",
+    "_id": "nvnpsdq"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 33,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.281Z",
+    "_id": "64xv6m7"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 34,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.282Z",
+    "_id": "4nlb3nk"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 35,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.282Z",
+    "_id": "zhhrca4"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 36,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.283Z",
+    "_id": "tx3nfqj"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 37,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.284Z",
+    "_id": "toonbmv"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 38,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.285Z",
+    "_id": "o5hup8w"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 39,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.285Z",
+    "_id": "y6okfkp"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 40,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.286Z",
+    "_id": "m9s4cak"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 41,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.287Z",
+    "_id": "ct3du4e"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 42,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.289Z",
+    "_id": "vg29l84"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 43,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.290Z",
+    "_id": "nvh35jg"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 44,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.291Z",
+    "_id": "3o83d0b"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 45,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.291Z",
+    "_id": "is2i2lu"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 46,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.292Z",
+    "_id": "735vbc7"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 47,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.293Z",
+    "_id": "3yqidjg"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 48,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.293Z",
+    "_id": "ds06abg"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 49,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.294Z",
+    "_id": "oad4naz"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 50,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.295Z",
+    "_id": "8sji36p"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 999,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.295Z",
+    "_id": "lj950oy"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 1000,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.296Z",
+    "_id": "ygck48j"
+  },
+  {
+    "customer": "h6jb1iv",
+    "restaurant_id": 1,
+    "interaction_type": "chat_query",
+    "_id": "1jbr6fs",
+    "createdAt": "2026-07-24T14:59:39.367Z"
+  },
+  {
+    "customer": "dz14fup",
+    "restaurant_id": 1001,
+    "interaction_type": "login",
+    "updatedAt": "2026-07-28T10:04:28.297Z",
+    "_id": "tqywuxy"
+  }
+]

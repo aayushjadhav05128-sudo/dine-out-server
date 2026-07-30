@@ -1,0 +1,38 @@
+[
+  {
+    "id": "S-9001",
+    "partner": "Vidyarthi Bhavan",
+    "bookings": 48,
+    "gross": 125000,
+    "commission": 22500,
+    "payout": 102500,
+    "status": "paid",
+    "date": "2026-06-15",
+    "_id": "gw91zq4",
+    "createdAt": "2026-07-14T08:36:01.805Z"
+  },
+  {
+    "id": "S-9002",
+    "partner": "Toit Brewpub",
+    "bookings": 180,
+    "gross": 480000,
+    "commission": 86400,
+    "payout": 393600,
+    "status": "pending",
+    "date": "2026-06-18",
+    "_id": "l87afuu",
+    "createdAt": "2026-07-14T08:36:01.805Z"
+  },
+  {
+    "id": "S-9003",
+    "partner": "Truffles",
+    "bookings": 140,
+    "gross": 350000,
+    "commission": 63000,
+    "payout": 287000,
+    "status": "processing",
+    "date": "2026-06-19",
+    "_id": "stypulm",
+    "createdAt": "2026-07-14T08:36:01.805Z"
+  }
+]
