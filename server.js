@@ -28,6 +28,11 @@ app.use('/api/payments', require('./routes/paymentRoutes'));
 app.use('/api/crm', require('./routes/crmRoutes'));
 app.use('/api/chat', require('./routes/chatRoutes'));
 
+// Health check route to keep the server awake
+app.get('/api/ping', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Dine Hub Server is active' });
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, async () => {
