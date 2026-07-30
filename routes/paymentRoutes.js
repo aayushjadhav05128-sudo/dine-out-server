@@ -526,6 +526,7 @@ router.post('/verify', async (req, res) => {
 
     // 3. Mark booking as paid/completed
     const isNewBookingPayment = booking.payment_status === 'Pending';
+    if (!booking.timeline) booking.timeline = [];
     if (booking.payment_status === 'Bill Pending') {
       booking.status = 'fulfilled';
       booking.payment_status = 'Bill Paid';

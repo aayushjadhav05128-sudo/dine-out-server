@@ -229,5 +229,54 @@
     "interaction_type": "login",
     "updatedAt": "2026-07-28T10:04:28.297Z",
     "_id": "tqywuxy"
+  },
+  {
+    "customer": "m0r1thg",
+    "restaurant_id": 1,
+    "interaction_type": "profile_view",
+    "_id": "335kwmd",
+    "createdAt": "2026-07-30T15:37:04.432Z"
+  },
+  {
+    "customer": "m0r1thg",
+    "restaurant_id": 1,
+    "interaction_type": "profile_view",
+    "_id": "nv37dp2",
+    "createdAt": "2026-07-30T15:37:10.750Z"
+  },
+  {
+    "customer": "m0r1thg",
+    "restaurant_id": 1,
+    "interaction_type": "profile_view",
+    "_id": "6trcjkw",
+    "createdAt": "2026-07-30T15:37:11.944Z"
+  },
+  {
+    "customer": "m0r1thg",
+    "restaurant_id": 1,
+    "interaction_type": "profile_view",
+    "_id": "3ypcexa",
+    "createdAt": "2026-07-30T16:44:58.840Z"
+  },
+  {
+    "customer": "m0r1thg",
+    "restaurant_id": 1,
+    "interaction_type": "profile_view",
+    "_id": "q6wus7k",
+    "createdAt": "2026-07-30T16:59:33.715Z"
+  },
+  {
+    "customer": "m0r1thg",
+    "restaurant_id": 1,
+    "interaction_type": "profile_view",
+    "_id": "jf1gv86",
+    "createdAt": "2026-07-30T16:59:36.956Z"
+  },
+  {
+    "customer": "m0r1thg",
+    "restaurant_id": 1,
+    "interaction_type": "profile_view",
+    "_id": "ibmujng",
+    "createdAt": "2026-07-30T16:59:39.081Z"
   }
 ]

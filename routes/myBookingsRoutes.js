@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
       guests: b.guests,
       status: b.status,
       cover_charge: b.cover_charge || 0,
-      created_at: b.createdAt ? b.createdAt.toISOString() : new Date().toISOString()
+      created_at: b.createdAt ? (typeof b.createdAt.toISOString === 'function' ? b.createdAt.toISOString() : new Date(b.createdAt).toISOString()) : new Date().toISOString()
     }));
 
     res.status(200).json(formatted);

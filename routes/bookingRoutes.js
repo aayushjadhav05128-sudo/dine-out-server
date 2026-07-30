@@ -236,6 +236,7 @@ router.put('/:id', protect, async (req, res) => {
       }
       
       // Timeline logging
+      if (!booking.timeline) booking.timeline = [];
       booking.timeline.push({
         timestamp: new Date(),
         user: req.user.role === 'admin' ? 'Super Admin' : 'Restaurant Partner',
@@ -363,6 +364,7 @@ router.post('/:id/generate-bill', protect, async (req, res) => {
     booking.payment_status = payment_method === 'Cash' ? 'Bill Paid' : 'Paid'; // Cash is paid instantly, online handles checkout
     
     // Push events to timeline
+    if (!booking.timeline) booking.timeline = [];
     booking.timeline.push({
       timestamp: new Date(),
       user: 'Restaurant Partner',
