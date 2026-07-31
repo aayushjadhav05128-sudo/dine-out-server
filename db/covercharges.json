@@ -1,0 +1,36 @@
+[
+  {
+    "id": "CC-151763",
+    "booking_id": 5018,
+    "customer_name": "Test Diner",
+    "customer_phone": "+91 7955498571",
+    "restaurant_name": "Toit Brewpub",
+    "guests": 4,
+    "amount": 5000,
+    "payment_status": "Paid",
+    "transaction_id": "pay_verify_test_wvayhm",
+    "payment_gateway": "Razorpay",
+    "payment_time": "2026-07-30T17:29:01.138Z",
+    "refund_status": "None",
+    "reservation_status": "Payment Verified",
+    "_id": "vltzbfo",
+    "createdAt": "2026-07-30T17:29:01.138Z"
+  },
+  {
+    "id": "CC-530207",
+    "booking_id": 5019,
+    "customer_name": "Test Diner",
+    "customer_phone": "+91 6973085291",
+    "restaurant_name": "Toit Brewpub",
+    "guests": 4,
+    "amount": 5000,
+    "payment_status": "Paid",
+    "transaction_id": "pay_verify_test_nz9mgw",
+    "payment_gateway": "Razorpay",
+    "payment_time": "2026-07-30T17:29:53.622Z",
+    "refund_status": "None",
+    "reservation_status": "Payment Verified",
+    "_id": "xijqs1s",
+    "createdAt": "2026-07-30T17:29:53.623Z"
+  }
+]

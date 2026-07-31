@@ -23,5 +23,20 @@
     "facebook_id": "fb_aayushjadhav",
     "_id": "m0r1thg",
     "createdAt": "2026-07-30T15:37:04.431Z"
+  },
+  {
+    "name": "Test Diner",
+    "email": "test_diner@gmail.com",
+    "phone_number": "+91 7693521577",
+    "_id": "smln77u",
+    "createdAt": "2026-07-30T17:28:43.156Z",
+    "totalVisits": 0,
+    "lifetimeSpend": 0,
+    "averageBill": 0,
+    "favouriteRestaurants": [],
+    "offersRedeemed": 0,
+    "customerSegment": "Regular",
+    "loyaltyPoints": 0,
+    "favouriteCuisine": "North Indian"
   }
 ]

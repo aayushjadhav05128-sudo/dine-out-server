@@ -321,6 +321,52 @@ class MockModel {
     return new MockQuery(this._modelName, query, true);
   }
 
+  static async aggregate(pipeline) {
+    const data = loadCollection(this._modelName);
+    let result = data.map(doc => wrapDocument(this._modelName, doc));
+
+    for (const stage of pipeline) {
+      if (stage.$match) {
+        result = result.filter(item => matchQuery(item, stage.$match));
+      } else if (stage.$sort) {
+        const keys = Object.keys(stage.$sort);
+        result.sort((a, b) => {
+          for (const key of keys) {
+            const order = stage.$sort[key] === -1 ? -1 : 1;
+            const aVal = a[key] ? new Date(a[key]).getTime() : 0;
+            const bVal = b[key] ? new Date(b[key]).getTime() : 0;
+            if (aVal < bVal) return -1 * order;
+            if (aVal > bVal) return 1 * order;
+          }
+          return 0;
+        });
+      } else if (stage.$group) {
+        const idField = stage.$group._id;
+        const groups = {};
+        for (const item of result) {
+          let keyVal = 'null';
+          if (idField && idField.startsWith('$')) {
+            const prop = idField.substring(1);
+            keyVal = item[prop] ? (item[prop]._id || item[prop]).toString() : 'null';
+          }
+          if (!groups[keyVal]) {
+            groups[keyVal] = { _id: keyVal };
+            for (const groupKey in stage.$group) {
+              if (groupKey === '_id') continue;
+              const accum = stage.$group[groupKey];
+              if (accum.$first) {
+                const targetProp = accum.$first.substring(1);
+                groups[keyVal][groupKey] = item[targetProp];
+              }
+            }
+          }
+        }
+        result = Object.values(groups);
+      }
+    }
+    return result;
+  }
+
   static findById(id) {
     return new MockQuery(this._modelName, { _id: id }, true);
   }

@@ -71,6 +71,34 @@ router.post('/', async (req, res) => {
       ]
     });
 
+    // Track customer interaction for booking
+    try {
+      const Customer = require('../models/Customer');
+      const Interaction = require('../models/Interaction');
+      const emailVal = guest_email ? guest_email.toLowerCase() : '';
+      let customer = null;
+      if (emailVal) {
+        customer = await Customer.findOne({ email: emailVal });
+        if (!customer) {
+          customer = await Customer.create({
+            name: guestName,
+            email: emailVal,
+            phone_number: `+91 ${Math.floor(6000000000 + Math.random() * 4000000000)}`
+          });
+        }
+      }
+      if (customer) {
+        await Interaction.create({
+          customer: customer._id,
+          restaurant_id: restaurant.id,
+          interaction_type: 'booking'
+        });
+        console.log(`[CRM] Registered booking interaction for customer ${customer.email}`);
+      }
+    } catch (crmErr) {
+      console.error('Failed to log CRM booking interaction:', crmErr);
+    }
+
     // --- Retrieve Recipients for Booking Notification Emails ---
     try {
       const ownerUser = await User.findOne({ role: 'owner', restaurantId: restaurant.id });

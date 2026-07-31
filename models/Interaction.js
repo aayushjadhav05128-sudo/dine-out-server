@@ -12,7 +12,7 @@ const interactionSchema = new mongoose.Schema({
   },
   interaction_type: {
     type: String,
-    enum: ['profile_view', 'chat_query', 'login', 'signup', 'booking'],
+    enum: ['profile_view', 'chat_query', 'login', 'signup', 'booking', 'payment'],
     default: 'profile_view',
   }
 }, {

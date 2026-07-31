@@ -550,6 +550,34 @@ router.post('/verify', async (req, res) => {
     booking.razorpay_payment_id = razorpay_payment_id;
     await booking.save();
 
+    // Track customer payment interaction
+    try {
+      const Customer = require('../models/Customer');
+      const Interaction = require('../models/Interaction');
+      const emailVal = booking.guest_email ? booking.guest_email.toLowerCase() : '';
+      let customer = null;
+      if (emailVal) {
+        customer = await Customer.findOne({ email: emailVal });
+        if (!customer) {
+          customer = await Customer.create({
+            name: booking.guest,
+            email: emailVal,
+            phone_number: booking.guest_phone || `+91 ${Math.floor(6000000000 + Math.random() * 4000000000)}`
+          });
+        }
+      }
+      if (customer) {
+        await Interaction.create({
+          customer: customer._id,
+          restaurant_id: booking.restaurant,
+          interaction_type: 'payment'
+        });
+        console.log(`[CRM] Registered payment interaction for customer ${customer.email}`);
+      }
+    } catch (crmErr) {
+      console.error('Failed to log CRM payment interaction:', crmErr);
+    }
+
     // Create Cover Charge record if it was the initial booking payment
     if (isNewBookingPayment) {
       try {

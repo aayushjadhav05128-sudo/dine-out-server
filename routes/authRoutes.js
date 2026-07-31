@@ -146,11 +146,56 @@ router.post('/login', async (req, res) => {
 
 // @route   POST /api/auth/login-success
 // @desc    Trigger email confirmation on successful Google login
-router.post('/login-success', (req, res) => {
+router.post('/login-success', async (req, res) => {
   const { email, name } = req.body;
 
   if (!email) {
     return res.status(400).json({ message: 'Email is required' });
+  }
+
+  // Register login event in database
+  try {
+    const Customer = require('../models/Customer');
+    const Interaction = require('../models/Interaction');
+    const Restaurant = require('../models/Restaurant');
+    
+    let customer = await Customer.findOne({ email: email.toLowerCase() });
+    if (!customer) {
+      customer = await Customer.create({
+        name: name || email.split('@')[0],
+        email: email.toLowerCase(),
+        phone_number: `+91 ${Math.floor(6000000000 + Math.random() * 4000000000)}`
+      });
+    } else {
+      if (name && customer.name !== name) {
+        customer.name = name;
+        await customer.save();
+      }
+    }
+
+    const approvedRestaurants = await Restaurant.find({ status: 'approved' });
+    for (const rest of approvedRestaurants) {
+      await Interaction.findOneAndUpdate(
+        {
+          customer: customer._id,
+          restaurant_id: rest.id,
+          interaction_type: 'login',
+        },
+        {
+          $set: {
+            customer: customer._id,
+            restaurant_id: rest.id,
+            interaction_type: 'login',
+            updatedAt: new Date(),
+          },
+          $setOnInsert: { createdAt: new Date() }
+        },
+        { upsert: true, new: true }
+      );
+    }
+    console.log(`[CRM] Registered login event for customer ${customer.email}`);
+  } catch (crmErr) {
+    console.error('Failed to log CRM login event:', crmErr);
   }
 
   // Immediately respond to the client so there is zero delay in the mobile app
@@ -512,6 +557,43 @@ router.post('/google-login', async (req, res) => {
   } catch (error) {
     console.error('Google token verification failed:', error);
     res.status(400).json({ message: error.message || 'Google authentication failed' });
+  }
+// @route   POST /api/auth/check-exists
+// @desc    Check if a customer account already exists by email or phone number
+router.post('/check-exists', async (req, res) => {
+  const { email, phone } = req.body;
+  const Customer = require('../models/Customer');
+
+  try {
+    let query = [];
+    if (email) {
+      query.push({ email: email.trim().toLowerCase() });
+    }
+    if (phone) {
+      const sanitizedPhone = phone.replace(/[^0-9]/g, '');
+      query.push({ phone_number: sanitizedPhone });
+      query.push({ phone_number: `+91 ${sanitizedPhone}` });
+      query.push({ phone_number: `+91-${sanitizedPhone}` });
+      query.push({ phone_number: new RegExp(sanitizedPhone + '$') }); // suffix match to be safe
+    }
+
+    if (query.length === 0) {
+      return res.status(400).json({ error: 'Email or phone number is required' });
+    }
+
+    const existingCustomer = await Customer.findOne({ $or: query });
+
+    if (existingCustomer) {
+      return res.status(200).json({ 
+        exists: true, 
+        message: 'You already have an account, try logging in.' 
+      });
+    }
+
+    return res.status(200).json({ exists: false });
+  } catch (error) {
+    console.error('Failed to check existing customer:', error);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 });
 
