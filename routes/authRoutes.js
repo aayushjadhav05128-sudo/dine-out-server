@@ -558,6 +558,8 @@ router.post('/google-login', async (req, res) => {
     console.error('Google token verification failed:', error);
     res.status(400).json({ message: error.message || 'Google authentication failed' });
   }
+});
+
 // @route   POST /api/auth/check-exists
 // @desc    Check if a customer account already exists by email or phone number
 router.post('/check-exists', async (req, res) => {
