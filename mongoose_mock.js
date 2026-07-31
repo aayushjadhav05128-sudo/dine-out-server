@@ -264,8 +264,12 @@ class MockQuery {
       matched.sort((a, b) => {
         for (const key of keys) {
           const order = this._sort[key] === -1 ? -1 : 1;
-          const aVal = a[key];
-          const bVal = b[key];
+          let aVal = a[key];
+          let bVal = b[key];
+          if (key === 'createdAt' || key === 'updatedAt' || key === 'transaction_date' || key === 'billing_time') {
+            aVal = aVal ? new Date(aVal).getTime() : 0;
+            bVal = bVal ? new Date(bVal).getTime() : 0;
+          }
           if (aVal < bVal) return -1 * order;
           if (aVal > bVal) return 1 * order;
         }

@@ -24,9 +24,9 @@ const transporter = nodemailer.createTransport({
 // @desc    Get all bookings (for Admin Console, filtered for owners)
 router.get('/', protect, async (req, res) => {
   try {
-    let query = {};
+    let query = { status: { $ne: 'Payment Pending' } };
     if (req.user.role === 'owner') {
-      query = { restaurant: req.user.restaurantId };
+      query = { status: { $ne: 'Payment Pending' }, restaurant: req.user.restaurantId };
     }
     const bookings = await Booking.find(query).sort({ createdAt: -1 });
     res.status(200).json(bookings);
