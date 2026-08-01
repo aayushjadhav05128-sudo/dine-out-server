@@ -81,7 +81,7 @@ function sendAdminWelcomeEmail(email, name, role) {
 }
 
 // Setup Nodemailer transporter
-const transporter = nodemailer.createTransport({
+const nodemailerTransporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
   secure: true, // true for port 465, false for other ports
@@ -90,6 +90,61 @@ const transporter = nodemailer.createTransport({
     pass: process.env.SMTP_PASS
   }
 });
+
+const https = require('https');
+
+const transporter = {
+  sendMail: (mailOptions, callback) => {
+    if (process.env.RESEND_API_KEY) {
+      console.log(`[Email] RESEND_API_KEY found. Sending email to ${mailOptions.to} via Resend HTTP API...`);
+      let fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+      
+      const postData = JSON.stringify({
+        from: `Dine Hub <${fromEmail}>`,
+        to: mailOptions.to,
+        subject: mailOptions.subject,
+        text: mailOptions.text,
+        html: mailOptions.html
+      });
+
+      const reqOptions = {
+        hostname: 'api.resend.com',
+        port: 443,
+        path: '/emails',
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(postData)
+        }
+      };
+
+      const req = https.request(reqOptions, (res) => {
+        let body = '';
+        res.on('data', (chunk) => body += chunk);
+        res.on('end', () => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            console.log(`[Email] Email sent successfully via Resend to ${mailOptions.to}.`);
+            if (callback) callback(null, { response: 'Resend HTTP 200 OK' });
+          } else {
+            console.error(`[Email] Resend HTTP Error ${res.statusCode}:`, body);
+            if (callback) callback(new Error(`Resend Error: ${body}`), null);
+          }
+        });
+      });
+
+      req.on('error', (e) => {
+        console.error('[Email] Resend connection failed:', e);
+        if (callback) callback(e, null);
+      });
+
+      req.write(postData);
+      req.end();
+    } else {
+      nodemailerTransporter.sendMail(mailOptions, callback);
+    }
+  }
+};
 
 // @route   POST /api/auth/login
 // @desc    Auth user & get token
