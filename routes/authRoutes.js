@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const User = require('../models/User');
 const Restaurant = require('../models/Restaurant');
+const https = require('https');
 
 const FRONTEND_URL = process.env.FRONTEND_URL || "https://protraditional-joana-irruptively.ngrok-free.dev";
 
@@ -91,7 +92,7 @@ const nodemailerTransporter = nodemailer.createTransport({
   }
 });
 
-const https = require('https');
+
 
 const transporter = {
   sendMail: (mailOptions, callback) => {
@@ -452,7 +453,7 @@ router.get('/google-callback', (req, res) => {
   `);
 });
 
-const https = require('https');
+
 
 function verifyGoogleToken(idToken) {
   // If it's a mock token, bypass HTTP verification for local developer/tester convenience
