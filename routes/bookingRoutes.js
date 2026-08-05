@@ -119,15 +119,15 @@ router.post('/', async (req, res) => {
         // 1. Send B2C Confirmation Email to Guest (if guest email exists)
         if (guest_email) {
           const guestMailOptions = {
-            from: `"Dine Hub Booking" <${process.env.SMTP_USER}>`,
+            from: `"bookmydineout" <${process.env.SMTP_USER}>`,
             to: guest_email,
-            subject: `Dine Hub: Booking Confirmed at ${restaurant.name}! 🍽️`,
-            text: `Hello ${guestName},\n\nThanks for booking! Your table reservation at ${restaurant.name} is confirmed.\n\nReservation Details:\n- Restaurant: ${restaurant.name}\n- Date & Time: ${time}\n- Guests: ${guests} Guests\n\nWe look forward to hosting you!\n\nHappy Dining,\nThe Dine Hub Team`,
+            subject: `your booking for this restro at this time have beign conformed thankyou for booking through bookmydineout`,
+            text: `Hello ${guestName},\n\nyour booking for this restro at this time have beign conformed thankyou for booking through bookmydineout\n\nReservation Details:\n- Restaurant: ${restaurant.name}\n- Date & Time: ${time}\n- Guests: ${guests} Guests\n\nWe look forward to hosting you!\n\nHappy Dining,\nThe bookmydineout Team`,
             html: `
               <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
                 <h2 style="color: #FC8019; text-align: center; margin-bottom: 20px;">Booking Confirmed! 🎉</h2>
                 <p>Hello <strong>${guestName}</strong>,</p>
-                <p>Thanks for booking! Your table reservation is confirmed. We look forward to hosting you.</p>
+                <p style="font-size: 15px; line-height: 1.6; color: #2E1B10;">your booking for this restro at this time have beign conformed thankyou for booking through bookmydineout</p>
                 
                 <div style="background-color: #FFF5EC; border: 1px solid #FFD8BA; border-radius: 8px; padding: 15px; margin: 20px 0;">
                   <h3 style="margin-top: 0; color: #7C2D12; font-size: 15px;">Reservation Details:</h3>
@@ -147,9 +147,8 @@ router.post('/', async (req, res) => {
                   </table>
                 </div>
                 
-                <p style="font-size: 13px; color: #666; text-align: center;">If you need to change or cancel your reservation, please do so via the Dine Hub app.</p>
                 <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
-                <p style="font-size: 12px; color: #999; text-align: center;">Happy Dining,<br/>The Dine Hub Team</p>
+                <p style="font-size: 12px; color: #999; text-align: center;">Happy Dining,<br/>The bookmydineout Team</p>
               </div>
             `
           };

@@ -637,33 +637,15 @@ router.post('/verify', async (req, res) => {
       // B2C Customer Confirmation Email
       if (booking.guest_email && process.env.SMTP_USER && process.env.SMTP_PASS) {
         const guestMailOptions = {
-          from: `"Dine Hub Booking" <${process.env.SMTP_USER}>`,
+          from: `"bookmydineout" <${process.env.SMTP_USER}>`,
           to: booking.guest_email,
-          subject: `Dine Hub: Booking Confirmed at ${booking.restaurant_name}! 🍽️`,
-          text: `Hello ${booking.guest},\n\nThanks for booking! Your table reservation at ${booking.restaurant_name} is confirmed and payment of ₹${(booking.amount / 100).toFixed(2)} was verified.\n\nPayment Split Details:\n- Total Amount Paid: ₹${(booking.amount / 100).toFixed(2)}\n- Dine Hub Cover Charge (direct credit): ₹${(booking.cover_charge / 100).toFixed(2)}\n- Restaurant Bill (transferred to restaurant): ₹${(booking.bill_amount / 100).toFixed(2)}\n\nReservation Details:\n- Restaurant: ${booking.restaurant_name}\n- Date & Time: ${booking.booking_time}\n- Guests: ${booking.guests} Guests\n\nWe look forward to hosting you!\n\nHappy Dining,\nThe Dine Hub Team`,
+          subject: `your booking for this restro at this time have beign conformed thankyou for booking through bookmydineout`,
+          text: `Hello ${booking.guest},\n\nyour booking for this restro at this time have beign conformed thankyou for booking through bookmydineout\n\nReservation Details:\n- Restaurant: ${booking.restaurant_name}\n- Date & Time: ${booking.booking_time}\n- Guests: ${booking.guests} Guests\n\nPayment Details:\n- Total Amount Paid: ₹${(booking.amount / 100).toFixed(2)}\n\nWe look forward to hosting you!\n\nHappy Dining,\nThe bookmydineout Team`,
           html: `
             <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
               <h2 style="color: #FC8019; text-align: center; margin-bottom: 20px;">Booking Confirmed! 🎉</h2>
               <p>Hello <strong>${booking.guest}</strong>,</p>
-              <p>Thanks for booking! Your table reservation is confirmed. A total payment of <strong>₹${(booking.amount / 100).toFixed(2)}</strong> was verified successfully.</p>
-              
-              <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 15px; margin: 20px 0;">
-                <h3 style="margin-top: 0; color: #111827; font-size: 15px;">Payment Split Details:</h3>
-                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
-                  <tr>
-                    <td style="padding: 6px 0; color: #4B5563;">Dine Hub Cover Charge (direct credit):</td>
-                    <td style="padding: 6px 0; font-weight: bold; text-align: right; color: #111;">₹${(booking.cover_charge / 100).toFixed(2)}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 6px 0; color: #4B5563;">Restaurant Bill (100% to restaurant):</td>
-                    <td style="padding: 6px 0; font-weight: bold; text-align: right; color: #111;">₹${(booking.bill_amount / 100).toFixed(2)}</td>
-                  </tr>
-                  <tr style="border-top: 1px solid #E5E7EB;">
-                    <td style="padding: 8px 0; font-weight: bold; color: #111827; width: 150px;">Total Paid:</td>
-                    <td style="padding: 8px 0; font-weight: bold; text-align: right; color: #FC8019; font-size: 16px;">₹${(booking.amount / 100).toFixed(2)}</td>
-                  </tr>
-                </table>
-              </div>
+              <p style="font-size: 15px; line-height: 1.6; color: #2E1B10;">your booking for this restro at this time have beign conformed thankyou for booking through bookmydineout</p>
               
               <div style="background-color: #FFF5EC; border: 1px solid #FFD8BA; border-radius: 8px; padding: 15px; margin: 20px 0;">
                 <h3 style="margin-top: 0; color: #7C2D12; font-size: 15px;">Reservation Details:</h3>
@@ -687,7 +669,7 @@ router.post('/verify', async (req, res) => {
                 </table>
               </div>
               <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
-              <p style="font-size: 12px; color: #999; text-align: center;">Happy Dining,<br/>The Dine Hub Team</p>
+              <p style="font-size: 12px; color: #999; text-align: center;">Happy Dining,<br/>The bookmydineout Team</p>
             </div>
           `
         };
