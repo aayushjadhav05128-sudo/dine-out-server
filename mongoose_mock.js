@@ -23,13 +23,15 @@ function adjustDatesToRealTime(name, data) {
 
   if (name.toLowerCase() === 'booking') {
     return data.map(booking => {
-      if (booking.booking_time && typeof booking.booking_time === 'string' && (booking.booking_time.includes('2026-06-') || booking.booking_time.includes('2026-07-') || booking.booking_time.includes(' at '))) {
+      // Only adjust dates for pre-seeded bookings to keep the demo looking fresh.
+      // Do not adjust dates for user-created bookings (id > 5019) so their selected booking times are preserved.
+      if (booking.id <= 5019 && booking.booking_time && typeof booking.booking_time === 'string' && (booking.booking_time.includes('2026-06-') || booking.booking_time.includes('2026-07-') || booking.booking_time.includes(' at '))) {
         // Extract time slot (e.g. 08:30 PM)
         const timePart = booking.booking_time.split(' at ')[1] || '08:00 PM';
         
         // Find existing day offset from July 16, 2026 (or just default based on booking status/id)
         const targetDate = new Date(today);
-        if (booking.status === 'upcoming' || booking.status === 'confirmed') {
+        if (booking.status === 'upcoming' || booking.status === 'confirmed' || booking.status === 'Payment Verified') {
           targetDate.setDate(today.getDate() + 1); // Tomorrow
         } else if (booking.id === 5002) {
           targetDate.setDate(today.getDate()); // Today

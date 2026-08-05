@@ -48,7 +48,7 @@ const transporter = nodemailer.createTransport({
 });
 
 router.post('/create-order', async (req, res) => {
-  let { restaurantId, guests, guest, time, guest_email, bill_amount, cover_charge, amount, bookingId, is_booking_payment } = req.body;
+  let { restaurantId, guests, guest, time, guest_email, bill_amount, cover_charge, amount, bookingId, is_booking_payment, redirectUrl } = req.body;
 
   if (!restaurantId || !guests || !time) {
     return res.status(400).json({ error: 'Missing mandatory fields: restaurantId, guests, and time are required' });
@@ -94,13 +94,16 @@ router.post('/create-order', async (req, res) => {
         orderId = razorpayOrder.id;
       }
 
-      // Update the existing booking with bill details
+      // Update the existing booking with bill details and paying customer's details
       booking.razorpay_order_id = orderId;
       booking.bill_amount = billAmountInPaise;
       booking.commission_amount = commissionAmountInPaise;
       booking.amount = totalAmountInPaise; // this represents the transaction amount to be paid now
       booking.status = 'Payment Pending';
       booking.payment_status = 'Bill Pending';
+      if (guest) booking.guest = guest;
+      if (guest_email) booking.guest_email = guest_email;
+      if (redirectUrl) booking.app_redirect_url = redirectUrl;
       await booking.save();
     } else {
       // It is a new booking (either walk-in payment or new slot reservation)
@@ -146,7 +149,8 @@ router.post('/create-order', async (req, res) => {
         commission_percentage: commissionPercent,
         commission_amount: commissionAmountInPaise,
         payment_status: 'Pending',
-        settlement_status: 'Pending'
+        settlement_status: 'Pending',
+        app_redirect_url: redirectUrl
       });
     }
 
@@ -521,7 +525,7 @@ router.post('/verify', async (req, res) => {
     if (!verified) {
       booking.status = 'cancelled';
       await booking.save();
-      return res.redirect('/api/payments/failure');
+      return res.redirect(`/api/payments/failure?bookingId=${booking.id}`);
     }
 
     // 3. Mark booking as paid/completed
@@ -694,15 +698,51 @@ router.post('/verify', async (req, res) => {
 
       // B2B Staff Booking Notification Email
       if (staffRecipients.length > 0 && process.env.SMTP_USER && process.env.SMTP_PASS) {
-        const staffMailOptions = {
-          from: `"Dine Hub Booking Alerts" <${process.env.SMTP_USER}>`,
-          to: staffRecipients.join(', '),
-          subject: `[Dine Hub] New Booking Alert (Paid): ${booking.restaurant_name}`,
-          text: `A new reservation (Paid) has been confirmed:\n\n- Restaurant: ${booking.restaurant_name}\n- Customer: ${booking.guest}\n- Email: ${booking.guest_email || 'Not Provided'}\n- Time: ${booking.booking_time}\n- Guests: ${booking.guests}\n- Payment ID: ${razorpay_payment_id}\n\nOpen the Admin Console for details.`,
-          html: `
+        let subject = `[Dine Hub] New Booking Alert (Paid): ${booking.restaurant_name}`;
+        let text = `A new reservation (Paid) has been confirmed:\n\n- Restaurant: ${booking.restaurant_name}\n- Customer: ${booking.guest}\n- Email: ${booking.guest_email || 'Not Provided'}\n- Time: ${booking.booking_time}\n- Guests: ${booking.guests}\n- Payment ID: ${razorpay_payment_id}\n\nOpen the Admin Console for details.`;
+        let html = `
+          <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
+            <h2 style="color: #FC8019; text-align: center;">Paid Reservation Confirmed! 🛎️</h2>
+            <p>A new reservation with verified payment has been confirmed on Dine Hub:</p>
+            
+            <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 15px; margin: 20px 0;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                <tr>
+                  <td style="padding: 6px 0; font-weight: bold; width: 140px; color: #666;">Restaurant:</td>
+                  <td style="padding: 6px 0; font-weight: bold; color: #111;">${booking.restaurant_name}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px 0; font-weight: bold; color: #666;">Customer Name:</td>
+                  <td style="padding: 6px 0; color: #111; font-weight: 600;">${booking.guest}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px 0; font-weight: bold; color: #666;">Customer Email:</td>
+                  <td style="padding: 6px 0; color: #111;">${booking.guest_email || 'Not Provided'}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px 0; font-weight: bold; color: #666;">Reservation Time:</td>
+                  <td style="padding: 6px 0; color: #FC8019; font-weight: bold;">${booking.booking_time}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px 0; font-weight: bold; color: #666;">Guests:</td>
+                  <td style="padding: 6px 0; color: #111;">${booking.guests} Guests</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px 0; font-weight: bold; color: #666;">Payment ID:</td>
+                  <td style="padding: 6px 0; font-family: monospace; color: #111;">${razorpay_payment_id}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        `;
+
+        if (!isNewBookingPayment) {
+          subject = `[Dine Hub] Bill Paid Notification: ${booking.restaurant_name}`;
+          text = `Final dining bill paid by customer:\n\n- Restaurant: ${booking.restaurant_name}\n- Customer: ${booking.guest}\n- Email: ${booking.guest_email || 'Not Provided'}\n- Booking ID: B-${booking.id}\n- Bill Number: ${booking.bill_number || 'N/A'}\n- Bill Amount: ₹${((booking.bill_amount || 0) / 100).toFixed(2)}\n- Payment ID: ${razorpay_payment_id}\n\nOpen the Admin Console for details.`;
+          html = `
             <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
-              <h2 style="color: #FC8019; text-align: center;">Paid Reservation Confirmed! 🛎️</h2>
-              <p>A new reservation with verified payment has been confirmed on Dine Hub:</p>
+              <h2 style="color: #10B981; text-align: center;">Dining Bill Paid! 💰</h2>
+              <p>A customer has paid their dining bill on Dine Hub:</p>
               
               <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 15px; margin: 20px 0;">
                 <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
@@ -719,12 +759,16 @@ router.post('/verify', async (req, res) => {
                     <td style="padding: 6px 0; color: #111;">${booking.guest_email || 'Not Provided'}</td>
                   </tr>
                   <tr>
-                    <td style="padding: 6px 0; font-weight: bold; color: #666;">Reservation Time:</td>
-                    <td style="padding: 6px 0; color: #FC8019; font-weight: bold;">${booking.booking_time}</td>
+                    <td style="padding: 6px 0; font-weight: bold; color: #666;">Booking ID:</td>
+                    <td style="padding: 6px 0; color: #111;">B-${booking.id}</td>
                   </tr>
                   <tr>
-                    <td style="padding: 6px 0; font-weight: bold; color: #666;">Guests:</td>
-                    <td style="padding: 6px 0; color: #111;">${booking.guests} Guests</td>
+                    <td style="padding: 6px 0; font-weight: bold; color: #666;">Bill Number:</td>
+                    <td style="padding: 6px 0; color: #111;">${booking.bill_number || 'N/A'}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; font-weight: bold; color: #666;">Bill Amount Paid:</td>
+                    <td style="padding: 6px 0; color: #10B981; font-weight: bold; font-size: 16px;">₹${((booking.bill_amount || 0) / 100).toFixed(2)}</td>
                   </tr>
                   <tr>
                     <td style="padding: 6px 0; font-weight: bold; color: #666;">Payment ID:</td>
@@ -733,10 +777,19 @@ router.post('/verify', async (req, res) => {
                 </table>
               </div>
             </div>
-          `
+          `;
+        }
+
+        const staffMailOptions = {
+          from: `"Dine Hub Booking Alerts" <${process.env.SMTP_USER}>`,
+          to: staffRecipients.join(', '),
+          subject,
+          text,
+          html
         };
+
         transporter.sendMail(staffMailOptions, (err) => {
-          if (err) console.error('Failed to notify staff of booking:', err);
+          if (err) console.error('Failed to notify staff of payment/booking:', err);
         });
       }
     } catch (mailErr) {
@@ -764,106 +817,243 @@ router.get('/status/:orderId', async (req, res) => {
   }
 });
 
-// @route   GET /api/payment/success
+// @route   GET /api/payments/success
 // @desc    Renders a premium hosted success screen
-router.get('/success', (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Payment Successful</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <style>
-        body {
-          font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-          background: #FFFBF8;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 100vh;
-          margin: 0;
-          padding: 20px;
-          box-sizing: border-box;
-        }
-        .card {
-          background: white;
-          border: 1px solid #FFD8BA;
-          border-radius: 16px;
-          padding: 30px;
-          max-width: 400px;
-          width: 100%;
-          box-shadow: 0 10px 25px rgba(252, 128, 25, 0.05);
-          text-align: center;
-        }
-        .check-icon {
-          font-size: 48px;
-          color: #10B981;
-          margin-bottom: 15px;
-        }
-        h2 { color: #111827; margin: 0 0 10px 0; }
-        p { color: #4B5563; font-size: 14px; line-height: 1.5; margin: 0 0 20px 0; }
-      </style>
-    </head>
-    <body>
-      <div class="card">
-        <div class="check-icon">✓</div>
-        <h2>Payment Successful!</h2>
-        <p>Your table reservation has been confirmed. You can now close this window and return to the Dine Hub app.</p>
-      </div>
-    </body>
-    </html>
-  `);
+router.get('/success', async (req, res) => {
+  try {
+    const booking = await Booking.findOne({ id: Number(req.query.bookingId) });
+    let appRedirectUrl = null;
+    if (booking && booking.app_redirect_url) {
+      const separator = booking.app_redirect_url.includes('?') ? '&' : '?';
+      appRedirectUrl = `${booking.app_redirect_url}${separator}bookingId=${booking.id}&status=success`;
+    }
+
+    res.send(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Payment Successful</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        ${appRedirectUrl ? `<meta http-equiv="refresh" content="0;url=${appRedirectUrl}">` : ''}
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
+          body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #FFFBF8 0%, #FAF5EF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+          }
+          .card {
+            background: white;
+            border: 1px solid #FFD8BA;
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(252, 128, 25, 0.08);
+            text-align: center;
+          }
+          .check-icon {
+            font-size: 54px;
+            color: #10B981;
+            margin-bottom: 20px;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          }
+          h2 { color: #111827; margin: 0 0 10px 0; font-size: 24px; font-weight: 700; }
+          p { color: #4B5563; font-size: 15px; line-height: 1.6; margin: 0 0 25px 0; }
+          .redirect-btn {
+            text-decoration: none;
+            display: inline-block;
+            padding: 14px 28px;
+            background: #FC8019;
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 8px 16px rgba(252, 128, 25, 0.25);
+            transition: all 0.2s ease;
+          }
+          .redirect-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 8px rgba(252, 128, 25, 0.25);
+          }
+          .status-text {
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-top: 15px;
+          }
+          @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .loader {
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #FC8019;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+          }
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="card">
+          <div class="check-icon">✓</div>
+          <h2>Payment Successful!</h2>
+          <p>Your table reservation has been confirmed. We're redirecting you back to the Dine Hub app now.</p>
+          
+          ${appRedirectUrl ? `
+            <a href="${appRedirectUrl}" class="redirect-btn">Return to App Now</a>
+            <div class="status-text">
+              <div class="loader"></div>
+              Redirecting automatically...
+            </div>
+            <script>
+              window.location.href = "${appRedirectUrl}";
+            </script>
+          ` : `
+            <p style="font-size: 13px; color: #9CA3AF;">You can now close this browser tab safely.</p>
+          `}
+        </div>
+      </body>
+      </html>
+    `);
+  } catch (error) {
+    console.error('Success screen failed:', error);
+    res.status(500).send('Success screen failed to render');
+  }
 });
 
-// @route   GET /api/payment/failure
+// @route   GET /api/payments/failure
 // @desc    Renders a premium hosted failure screen
-router.get('/failure', (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Payment Cancelled</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <style>
-        body {
-          font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-          background: #FFFBF8;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 100vh;
-          margin: 0;
-          padding: 20px;
-          box-sizing: border-box;
-        }
-        .card {
-          background: white;
-          border: 1px solid #FCA5A5;
-          border-radius: 16px;
-          padding: 30px;
-          max-width: 400px;
-          width: 100%;
-          box-shadow: 0 10px 25px rgba(239, 68, 68, 0.05);
-          text-align: center;
-        }
-        .error-icon {
-          font-size: 48px;
-          color: #EF4444;
-          margin-bottom: 15px;
-        }
-        h2 { color: #111827; margin: 0 0 10px 0; }
-        p { color: #4B5563; font-size: 14px; line-height: 1.5; margin: 0 0 20px 0; }
-      </style>
-    </head>
-    <body>
-      <div class="card">
-        <div class="error-icon">✕</div>
-        <h2>Payment Cancelled</h2>
-        <p>The transaction was cancelled or verification failed. You may close this window and try booking again.</p>
-      </div>
-    </body>
-    </html>
-  `);
+router.get('/failure', async (req, res) => {
+  try {
+    const booking = await Booking.findOne({ id: Number(req.query.bookingId) });
+    let appRedirectUrl = null;
+    if (booking && booking.app_redirect_url) {
+      const separator = booking.app_redirect_url.includes('?') ? '&' : '?';
+      appRedirectUrl = `${booking.app_redirect_url}${separator}bookingId=${booking.id}&status=failure`;
+    }
+
+    res.send(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Payment Cancelled</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
+          body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #FFFBF8 0%, #FAF5EF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+          }
+          .card {
+            background: white;
+            border: 1px solid #FCA5A5;
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.08);
+            text-align: center;
+          }
+          .error-icon {
+            font-size: 54px;
+            color: #EF4444;
+            margin-bottom: 20px;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          }
+          h2 { color: #111827; margin: 0 0 10px 0; font-size: 24px; font-weight: 700; }
+          p { color: #4B5563; font-size: 15px; line-height: 1.6; margin: 0 0 25px 0; }
+          .redirect-btn {
+            text-decoration: none;
+            display: inline-block;
+            padding: 14px 28px;
+            background: #EF4444;
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 8px 16px rgba(239, 68, 68, 0.25);
+            transition: all 0.2s ease;
+          }
+          .redirect-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 8px rgba(239, 68, 68, 0.25);
+          }
+          .status-text {
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-top: 15px;
+          }
+          @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .loader {
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #EF4444;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+          }
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="card">
+          <div class="error-icon">✕</div>
+          <h2>Payment Cancelled</h2>
+          <p>The transaction was cancelled or verification failed. We're taking you back to try again.</p>
+          
+          ${appRedirectUrl ? `
+            <a href="${appRedirectUrl}" class="redirect-btn">Try Again Now</a>
+            <div class="status-text">
+              <div class="loader"></div>
+              Redirecting automatically...
+            </div>
+            <script>
+              setTimeout(function() {
+                window.location.href = "${appRedirectUrl}";
+              }, 600);
+            </script>
+          ` : `
+            <p style="font-size: 13px; color: #9CA3AF;">You can now close this browser tab safely.</p>
+          `}
+        </div>
+      </body>
+      </html>
+    `);
+  } catch (error) {
+    console.error('Failure screen failed:', error);
+    res.status(500).send('Failure screen failed to render');
+  }
 });
 
 // @route   GET /api/payments/cover-charges

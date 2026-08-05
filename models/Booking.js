@@ -117,6 +117,9 @@ const bookingSchema = new mongoose.Schema({
   invoice: {
     type: String
   },
+  app_redirect_url: {
+    type: String
+  },
   timeline: [{
     timestamp: { type: Date, default: Date.now },
     user: { type: String, default: 'System' },
