@@ -4,6 +4,81 @@ const Customer = require('../models/Customer');
 const Interaction = require('../models/Interaction');
 const { protect } = require('../middleware/authMiddleware');
 const nodemailer = require('nodemailer');
+const https = require('https');
+
+// Setup Nodemailer transporter
+const nodemailerTransporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
+  }
+});
+
+// Unified transporter with fallback
+const transporter = {
+  sendMail: (mailOptions, callback) => {
+    if (process.env.RESEND_API_KEY) {
+      console.log(`[Email] RESEND_API_KEY found. Sending email to ${mailOptions.to} via Resend HTTP API...`);
+      let fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+      
+      const postData = JSON.stringify({
+        from: `Dine Hub <${fromEmail}>`,
+        to: mailOptions.to,
+        subject: mailOptions.subject,
+        text: mailOptions.text,
+        html: mailOptions.html
+      });
+
+      const reqOptions = {
+        hostname: 'api.resend.com',
+        port: 443,
+        path: '/emails',
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(postData)
+        }
+      };
+
+      const req = https.request(reqOptions, (res) => {
+        let body = '';
+        res.on('data', (chunk) => body += chunk);
+        res.on('end', () => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            console.log(`[Email] Email sent successfully via Resend to ${mailOptions.to}.`);
+            if (callback) callback(null, { response: 'Resend HTTP 200 OK' });
+          } else {
+            console.error(`[Email] Resend HTTP Error ${res.statusCode}:`, body, "Falling back to Gmail SMTP...");
+            nodemailerTransporter.sendMail(mailOptions, callback);
+          }
+        });
+      });
+
+      req.on('error', (e) => {
+        console.error('[Email] Resend connection failed, falling back to Gmail SMTP:', e);
+        nodemailerTransporter.sendMail(mailOptions, callback);
+      });
+
+      req.write(postData);
+      req.end();
+    } else {
+      nodemailerTransporter.sendMail(mailOptions, callback);
+    }
+  }
+};
+
+const sendMailPromise = (mailOptions) => {
+  return new Promise((resolve, reject) => {
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) reject(err);
+      else resolve(info);
+    });
+  });
+};
 
 let etherealTransporter = null;
 async function getEtherealTransporter() {
@@ -205,6 +280,10 @@ router.post('/broadcast', protect, async (req, res) => {
   }
 
   try {
+    const Restaurant = require('../models/Restaurant');
+    const restaurant = await Restaurant.findOne({ id: Number(restaurantId) });
+    const restName = restaurant ? restaurant.name : 'Dine Hub';
+
     // 1. Fetch unique target customers
     const interactions = await Interaction.find({ restaurant_id: Number(restaurantId) }).populate('customer');
     if (interactions.length === 0) {
@@ -384,23 +463,33 @@ router.post('/broadcast', protect, async (req, res) => {
       // Fallback sandbox simulation if Meta and Twilio are placeholders and scoped IDs exist
       if (!primaryChannelSuccess && !isMetaWaConfigured && !isTwilioConfigured && !isMetaPageConfigured) {
         
-        // 5. Real Email Fallback via Ethereal
+        // 5. Real Email Fallback via unified transporter
         if (user.email && (targetChannel === 'email' || targetChannel === 'all')) {
-          const transporter = await getEtherealTransporter();
-          if (transporter) {
-            try {
-              const info = await transporter.sendMail({
-                from: '"Dine Hub CRM" <marketing@dinehub.local>',
-                to: user.email,
-                subject: 'Special Offer from Dine Hub!',
-                text: `Hi ${recipientName}!\n\n${offerText}`,
-              });
-              console.log(`[Ethereal Email] Sent successfully to ${user.email}. Preview URL: ${nodemailer.getTestMessageUrl(info)}`);
-              usedChannel = 'email_ethereal';
-              primaryChannelSuccess = true;
-            } catch (err) {
-              errorLog = err.message;
+          try {
+            let fromEmail = process.env.SMTP_USER || 'no-reply@dinehub.com';
+            if (process.env.RESEND_API_KEY) {
+              fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
             }
+            await sendMailPromise({
+              from: `Dine Hub <${fromEmail}>`,
+              to: user.email,
+              subject: `Special Offer from ${restName || 'Dine Hub'}! 🍽️`,
+              text: `Hi ${recipientName}!\n\n${offerText}\n\nOpt-out of future updates by replying to this email.`,
+              html: `
+                <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
+                  <h2 style="color: #FC8019;">Special Offer from ${restName || 'Dine Hub'}! 🍽️</h2>
+                  <p>Hi <strong>${recipientName}</strong>,</p>
+                  <p>${offerText}</p>
+                  <hr style="border: 0; border-top: 1px solid #eee;" />
+                  <p style="font-size: 11px; color: #999;">Opt-out of future updates from ${restName || 'Dine Hub'} by replying to this email.</p>
+                </div>
+              `
+            });
+            console.log(`[Email] CRM Broadcast sent successfully to ${user.email}.`);
+            usedChannel = 'email';
+            primaryChannelSuccess = true;
+          } catch (err) {
+            errorLog = err.message;
           }
         }
 

@@ -9,28 +9,281 @@ const https = require('https');
 
 const FRONTEND_URL = process.env.FRONTEND_URL || "https://protraditional-joana-irruptively.ngrok-free.dev";
 
-function sendAdminWelcomeEmail(email, name, role) {
+async function sendAdminWelcomeEmail(email, name, role) {
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
     console.warn("[Email] SMTP credentials missing, skipping welcome email");
     return;
   }
 
-  const mailOptions = {
-    from: `"Dine Hub Admin" <${process.env.SMTP_USER}>`,
-    to: email,
-    subject: `Welcome to Dine Hub Admin Panel! 🚀`,
-    text: `Hello ${name || 'Partner'},\n\nWelcome to the Dine Hub Admin Panel! Your sign-in as an ${role} has been successfully confirmed.\n\nManage Console: ${FRONTEND_URL}\n\nHappy Managing,\nThe Dine Hub Team`,
-    html: `
-      <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
-        <h2 style="color: #FC8019;">Welcome to the Dine Hub Admin Panel! 🚀</h2>
-        <p>Hello <strong>${name || 'Partner'}</strong>,</p>
-        <p>Your sign-in as an <strong>${role}</strong> has been successfully confirmed. We are excited to partner with you.</p>
-        <p>You can now manage your brand configuration, view reservations, launch marketing CRM campaigns, and handle settlements directly from your dashboard.</p>
-        <p style="margin: 20px 0;"><a href="${FRONTEND_URL}" style="background-color: #FC8019; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Access Admin Dashboard</a></p>
-        <hr style="border: 0; border-top: 1px solid #eee;" />
-        <p style="font-size: 12px; color: #999;">Happy Dining,<br/>The Dine Hub Team</p>
+  let formattedName = 'Partner';
+  if (name) {
+    formattedName = name.split(/[._\s-]+/)
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
+  }
+
+  let restaurantName = '';
+  let restaurantLocation = '';
+
+  try {
+    if (role === 'owner') {
+      const user = await User.findOne({ email: email.toLowerCase() });
+      if (user && user.restaurantId) {
+        const restaurant = await Restaurant.findOne({ id: user.restaurantId });
+        if (restaurant) {
+          restaurantName = restaurant.name;
+          restaurantLocation = restaurant.location;
+        }
+      }
+    }
+  } catch (err) {
+    console.error("[Email] Error fetching restaurant details for admin email:", err);
+  }
+
+  const isSuperAdmin = role === 'admin';
+  const roleTitle = isSuperAdmin ? 'Super Administrator' : 'Restaurant Partner';
+  const roleBadgeColor = isSuperAdmin ? '#EF4444' : '#10B981';
+  const roleBadgeBg = isSuperAdmin ? '#FEE2E2' : '#D1FAE5';
+
+  const subject = isSuperAdmin 
+    ? `🚨 Security Alert: Super Admin Login Authorized`
+    : `Welcome to Dine Hub Admin Console! 🍽️`;
+
+  // Dynamic dashboard items list
+  let toolkitHtml = '';
+  if (isSuperAdmin) {
+    toolkitHtml = `
+      <div style="margin-bottom: 15px; padding: 12px; background-color: #F9FAFB; border-radius: 8px; border-left: 3px solid #EF4444;">
+        <span style="font-size: 16px; margin-right: 8px;">🛡️</span>
+        <strong style="color: #111827; font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">System Health & Controls</strong>
+        <p style="margin: 4px 0 0 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #6B7280; line-height: 1.4;">Monitor active connections, check user sessions, and adjust global constants.</p>
       </div>
-    `
+      <div style="margin-bottom: 15px; padding: 12px; background-color: #F9FAFB; border-radius: 8px; border-left: 3px solid #EF4444;">
+        <span style="font-size: 16px; margin-right: 8px;">🏢</span>
+        <strong style="color: #111827; font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">Restaurant Approval Pipeline</strong>
+        <p style="margin: 4px 0 0 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #6B7280; line-height: 1.4;">Review onboarding requests, activate/suspend partner accounts, and view global performance.</p>
+      </div>
+      <div style="padding: 12px; background-color: #F9FAFB; border-radius: 8px; border-left: 3px solid #EF4444;">
+        <span style="font-size: 16px; margin-right: 8px;">📊</span>
+        <strong style="color: #111827; font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">Platform Settlements & CRM</strong>
+        <p style="margin: 4px 0 0 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #6B7280; line-height: 1.4;">Verify daily transactions, handle bulk payouts, and oversee global push-campaign metrics.</p>
+      </div>
+    `;
+  } else {
+    toolkitHtml = `
+      <div style="margin-bottom: 15px; padding: 12px; background-color: #F9FAFB; border-radius: 8px; border-left: 3px solid #FC8019;">
+        <span style="font-size: 16px; margin-right: 8px;">📈</span>
+        <strong style="color: #111827; font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">Live Bookings & Analytics</strong>
+        <p style="margin: 4px 0 0 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #6B7280; line-height: 1.4;">Monitor incoming table reservations, guest counts, and revenue flows in real-time.</p>
+      </div>
+      <div style="margin-bottom: 15px; padding: 12px; background-color: #F9FAFB; border-radius: 8px; border-left: 3px solid #FC8019;">
+        <span style="font-size: 16px; margin-right: 8px;">📂</span>
+        <strong style="color: #111827; font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">Catalog & Offer Controls</strong>
+        <p style="margin: 4px 0 0 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #6B7280; line-height: 1.4;">Update menus, set seat capacities, and toggle up to 50% discount offers instantly.</p>
+      </div>
+      <div style="padding: 12px; background-color: #F9FAFB; border-radius: 8px; border-left: 3px solid #FC8019;">
+        <span style="font-size: 16px; margin-right: 8px;">💰</span>
+        <strong style="color: #111827; font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">Payouts & Commissions</strong>
+        <p style="margin: 4px 0 0 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #6B7280; line-height: 1.4;">Track settlements, view commission splits, and request direct bank payouts.</p>
+      </div>
+    `;
+  }
+
+  // Build the details table rows
+  let detailsRowsHtml = `
+    <tr>
+      <td style="padding: 8px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; width: 130px; font-weight: 500;">Account Email</td>
+      <td style="padding: 8px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #111827; font-weight: 600;">${email}</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; font-weight: 500;">Console Role</td>
+      <td style="padding: 8px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px;">
+        <span style="background-color: ${roleBadgeBg}; color: ${roleBadgeColor}; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase;">
+          ${roleTitle}
+        </span>
+      </td>
+    </tr>
+  `;
+
+  if (role === 'owner' && restaurantName) {
+    detailsRowsHtml += `
+      <tr>
+        <td style="padding: 8px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; font-weight: 500;">Restaurant</td>
+        <td style="padding: 8px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #111827; font-weight: 600;">${restaurantName}</td>
+      </tr>
+    `;
+    if (restaurantLocation) {
+      detailsRowsHtml += `
+        <tr>
+          <td style="padding: 8px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; font-weight: 500;">Location</td>
+          <td style="padding: 8px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #111827; font-weight: 600;">${restaurantLocation}</td>
+        </tr>
+      `;
+    }
+  }
+
+  detailsRowsHtml += `
+    <tr>
+      <td style="padding: 8px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #6B7280; font-weight: 500;">Access Time</td>
+      <td style="padding: 8px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #111827; font-weight: 600;">
+        ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' })} IST
+      </td>
+    </tr>
+  `;
+
+  const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${subject}</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #F3F4F6; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #F3F4F6; padding: 30px 10px;">
+    <tr>
+      <td align="center">
+        <!--[if mso]>
+        <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+        <tr>
+        <td align="center" valign="top" width="600">
+        <![endif]-->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05); border: 1px solid #E5E7EB;">
+          
+          <!-- BRAND HEADER -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #FC8019 0%, #FF5A5F 100%); padding: 40px 30px; text-align: center; color: #ffffff;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td align="center">
+                    <div style="background-color: rgba(255, 255, 255, 0.2); width: 68px; height: 68px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 15px; font-size: 32px; line-height: 68px;">
+                      ${isSuperAdmin ? '🛡️' : '🍴'}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <h1 style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2;">
+                      Dine Hub Partners
+                    </h1>
+                    <p style="margin: 5px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 14px; color: rgba(255, 255, 255, 0.85); font-weight: 500;">
+                      ${isSuperAdmin ? 'System Administrator Console' : 'Restaurant Management Portal'}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- MAIN CARD CONTENT -->
+          <tr>
+            <td style="padding: 40px 35px 30px 35px; background-color: #ffffff;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+                
+                <!-- Welcome Greeting -->
+                <tr>
+                  <td>
+                    <h2 style="margin: 0 0 15px 0; color: #111827; font-size: 20px; font-weight: 700;">
+                      Hello ${formattedName},
+                    </h2>
+                    <p style="margin: 0 0 25px 0; font-size: 15px; line-height: 1.6; color: #4B5563;">
+                      ${isSuperAdmin 
+                        ? 'A successful log-in to your Super Administrator account was authorized. You have full administrative control over the Dine Hub platform configuration, payouts, and system integrations.' 
+                        : `A successful sign-in to the partner dashboard was authorized. We're excited to help you manage your restaurant operations, seat bookings, and revenue streams.`}
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- Session Metadata Card -->
+                <tr>
+                  <td style="background-color: #F9FAFB; border: 1px solid #F3F4F6; border-radius: 12px; padding: 20px; margin-bottom: 25px;">
+                    <h3 style="margin: 0 12px 12px 0; font-size: 12px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px;">
+                      Authentication Details
+                    </h3>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                      ${detailsRowsHtml}
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Toolkit Checklist -->
+                <tr>
+                  <td style="padding-top: 15px;">
+                    <h3 style="margin: 0 0 15px 0; font-size: 12px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; letter-spacing: 1px;">
+                      ${isSuperAdmin ? 'Core Admin Capabilities' : 'Your Management Toolkit'}
+                    </h3>
+                    ${toolkitHtml}
+                  </td>
+                </tr>
+
+                <!-- CTA Button -->
+                <tr>
+                  <td align="center" style="padding: 35px 0 15px 0;">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td align="center" style="border-radius: 8px; background-color: #FC8019;">
+                          <a href="${FRONTEND_URL}" target="_blank" style="border: 1px solid #FC8019; border-radius: 8px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: bold; color: #ffffff; text-decoration: none; padding: 14px 28px; display: inline-block;">
+                            Go to Console Dashboard
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Security warning -->
+                <tr>
+                  <td style="padding-top: 20px;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #FEF3C7; border-left: 4px solid #F59E0B; border-radius: 6px; padding: 15px;">
+                      <tr>
+                        <td style="font-size: 13px; line-height: 1.5; color: #78350f; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+                          <strong>🛡️ Security Alert:</strong> If this sign-in was not authorized by you, please reset your password immediately or contact our technical operations division to lock access.
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="background-color: #F9FAFB; padding: 30px 25px; text-align: center; border-top: 1px solid #F3F4F6;">
+              <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #9CA3AF; line-height: 1.5;">
+                This email was sent to ${email} as a secure notification regarding your administrative Dine Hub Partner Console access.
+              </p>
+              <p style="margin: 10px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #9CA3AF;">
+                &copy; ${new Date().getFullYear()} Dine Hub Inc. All rights reserved.
+              </p>
+              <p style="margin: 15px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; color: #D1D5DB;">
+                Bengaluru Hub, Indiranagar, Karnataka, India
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!--[if mso]>
+        </td>
+        </tr>
+        </table>
+        <![endif]-->
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+  `;
+
+  const text = `Hello ${formattedName},\n\nYour sign-in to the Dine Hub Admin Panel as an ${roleTitle} has been successfully authorized.\n\nAccount Email: ${email}\nRole: ${roleTitle}\nAccess Time: ${new Date().toLocaleString()}\n\nAccess Dashboard: ${FRONTEND_URL}\n\nIf you did not authorize this access, please reset your password immediately.\n\nHappy Managing,\nThe Dine Hub Team`;
+
+  const mailOptions = {
+    from: `"Dine Hub Partners" <${process.env.SMTP_USER}>`,
+    to: email,
+    subject: subject,
+    text: text,
+    html: html
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -41,13 +294,13 @@ function sendAdminWelcomeEmail(email, name, role) {
     }
   });
 
-  // Alert the system administrator about this console sign-in
+  // Alert the system administrator about this console sign-in (if it's not the admin's own email to avoid loops)
   if (email.toLowerCase() !== process.env.SMTP_USER.toLowerCase()) {
     const sysAlertOptions = {
       from: `"Dine Hub Admin Monitor" <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_USER,
-      subject: `🚨 [Dine Hub Console] Login Event: ${role}`,
-      text: `An administrative login occurred:\n\n- Role: ${role}\n- Name: ${name || 'User'}\n- Email: ${email}\n- Date/Time: ${new Date().toLocaleString()}`,
+      subject: `🚨 [Dine Hub Console] Login Event: ${roleTitle}`,
+      text: `An administrative login occurred:\n\n- Role: ${roleTitle}\n- Name: ${formattedName}\n- Email: ${email}\n- Date/Time: ${new Date().toLocaleString()}`,
       html: `
         <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
           <h2 style="color: #EF4444; margin-bottom: 20px;">Dine Hub Console Sign-in Alert 🚨</h2>
@@ -55,11 +308,11 @@ function sendAdminWelcomeEmail(email, name, role) {
           <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
             <tr>
               <td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold; width: 120px;">Role:</td>
-              <td style="padding: 8px 0; border-bottom: 1px solid #eee; color: #EF4444; font-weight: bold;">${role}</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #eee; color: #EF4444; font-weight: bold;">${roleTitle}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;">Name:</td>
-              <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${name || 'User'}</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${formattedName}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;">Email:</td>
@@ -128,15 +381,15 @@ const transporter = {
             console.log(`[Email] Email sent successfully via Resend to ${mailOptions.to}.`);
             if (callback) callback(null, { response: 'Resend HTTP 200 OK' });
           } else {
-            console.error(`[Email] Resend HTTP Error ${res.statusCode}:`, body);
-            if (callback) callback(new Error(`Resend Error: ${body}`), null);
+            console.error(`[Email] Resend HTTP Error ${res.statusCode}:`, body, "Falling back to Gmail SMTP...");
+            nodemailerTransporter.sendMail(mailOptions, callback);
           }
         });
       });
 
       req.on('error', (e) => {
-        console.error('[Email] Resend connection failed:', e);
-        if (callback) callback(e, null);
+        console.error('[Email] Resend connection failed, falling back to Gmail SMTP:', e);
+        nodemailerTransporter.sendMail(mailOptions, callback);
       });
 
       req.write(postData);
@@ -267,15 +520,33 @@ router.post('/login-success', async (req, res) => {
     from: `"Dine Hub" <${process.env.SMTP_USER}>`,
     to: email,
     subject: `Welcome to Dine Hub! 🎉`,
-    text: `Hello ${name || 'Foodie'},\n\nWelcome to Dine Hub! Your sign-in has been successfully confirmed.\n\nExplore Dine Hub: ${FRONTEND_URL}\n\nHappy Dining,\nThe Dine Hub Team`,
+    text: `Hello ${name || 'Foodie'},\n\nWelcome to Dine Hub! Your sign-in has been successfully confirmed. Explore our premium bookings today.\n\nExplore Dine Hub: ${FRONTEND_URL}\n\nHappy Dining,\nThe Dine Hub Team`,
     html: `
-      <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
-        <h2 style="color: #FC8019;">Welcome to Dine Hub! 🎉</h2>
-        <p>Hello <strong>${name || 'Foodie'}</strong>,</p>
-        <p>Your sign-in has been successfully confirmed. We are thrilled to have you back! Get ready to explore reservations and save up to 50% on bookings.</p>
-        <p style="margin: 20px 0;"><a href="${FRONTEND_URL}" style="background-color: #FC8019; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Explore Dine Hub</a></p>
-        <hr style="border: 0; border-top: 1px solid #eee;" />
-        <p style="font-size: 12px; color: #999;">Happy Dining,<br/>The Dine Hub Team</p>
+      <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #F8FAFC; padding: 40px 20px; text-align: center;">
+        <div style="max-width: 580px; margin: 0 auto; background-color: #FFFFFF; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); border: 1px solid #E2E8F0; text-align: left;">
+          <!-- Header -->
+          <div style="background: linear-gradient(135deg, #FC8019 0%, #FF5722 100%); padding: 30px; text-align: center;">
+            <h1 style="color: #FFFFFF; font-size: 24px; font-weight: 800; margin: 0;">Welcome to Dine Hub! 🎉</h1>
+          </div>
+          <!-- Body -->
+          <div style="padding: 30px 40px;">
+            <p style="font-size: 16px; color: #1E293B; line-height: 1.5; margin: 0 0 16px 0;">Hello <strong>${name || 'Foodie'}</strong>,</p>
+            <p style="font-size: 15px; color: #475569; line-height: 1.6; margin: 0 0 24px 0;">
+              Your sign-in has been successfully confirmed. We are thrilled to have you! Get ready to explore partner restaurants and unlock exclusive deals of up to 50% off on your bookings.
+            </p>
+            <div style="text-align: center; margin: 30px 0 20px 0;">
+              <a href="${FRONTEND_URL}" style="background-color: #FC8019; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: bold; font-size: 15px; display: inline-block; box-shadow: 0 4px 6px -1px rgba(252, 128, 25, 0.2);">
+                Explore Restaurants
+              </a>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div style="background-color: #F8FAFC; border-top: 1px solid #F1F5F9; padding: 24px 30px; text-align: center;">
+            <p style="font-size: 13px; color: #94A3B8; margin: 0;">
+              Happy Dining,<br/>The Dine Hub Team
+            </p>
+          </div>
+        </div>
       </div>
     `
   };
@@ -357,16 +628,32 @@ router.post('/send-google-otp', (req, res) => {
     subject: `Dine Hub Verification Code: ${otp}`,
     text: `Hello ${name || 'Foodie'},\n\nYour Dine Hub verification code is: ${otp}\n\nThis code is valid for 10 minutes. For security reasons, do not share this code with anyone.\n\nHappy Dining,\nThe Dine Hub Team`,
     html: `
-      <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
-        <h2 style="color: #FC8019; text-align: center;">Verify Your Account</h2>
-        <p>Hello <strong>${name || 'Foodie'}</strong>,</p>
-        <p>Please use the 6-digit verification code below to complete your sign-in to the Dine Hub app:</p>
-        <div style="background-color: #FFF5EC; border: 1px solid #FFD8BA; border-radius: 5px; padding: 15px; text-align: center; font-size: 28px; font-weight: bold; color: #FC8019; letter-spacing: 5px; margin: 20px 0;">
-          ${otp}
+      <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #F8FAFC; padding: 40px 20px; text-align: center;">
+        <div style="max-width: 500px; margin: 0 auto; background-color: #FFFFFF; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); border: 1px solid #E2E8F0; text-align: left;">
+          <!-- Header -->
+          <div style="background: linear-gradient(135deg, #FC8019 0%, #FF5722 100%); padding: 30px; text-align: center;">
+            <h1 style="color: #FFFFFF; font-size: 22px; font-weight: 800; margin: 0;">Verify Your Account 🔐</h1>
+          </div>
+          <!-- Body -->
+          <div style="padding: 30px 40px;">
+            <p style="font-size: 16px; color: #1E293B; line-height: 1.5; margin: 0 0 16px 0;">Hello <strong>${name || 'Foodie'}</strong>,</p>
+            <p style="font-size: 15px; color: #475569; line-height: 1.6; margin: 0 0 24px 0;">
+              Please use the 6-digit verification code below to complete your sign-in to the Dine Hub app:
+            </p>
+            <div style="background-color: #FFF5EC; border: 1px solid #FFD8BA; border-radius: 12px; padding: 20px; text-align: center; font-size: 32px; font-weight: 800; color: #FC8019; letter-spacing: 6px; margin: 20px 0;">
+              ${otp}
+            </div>
+            <p style="font-size: 13px; color: #64748B; text-align: center; line-height: 1.5; margin: 0;">
+              This code is valid for 10 minutes. For security reasons, do not share this code with anyone.
+            </p>
+          </div>
+          <!-- Footer -->
+          <div style="background-color: #F8FAFC; border-top: 1px solid #F1F5F9; padding: 24px 30px; text-align: center;">
+            <p style="font-size: 13px; color: #94A3B8; margin: 0;">
+              Happy Dining,<br/>The Dine Hub Team
+            </p>
+          </div>
         </div>
-        <p style="font-size: 13px; color: #666; text-align: center;">This code is valid for 10 minutes. For security reasons, do not share this code.</p>
-        <hr style="border: 0; border-top: 1px solid #eee;" />
-        <p style="font-size: 12px; color: #999;">Happy Dining,<br/>The Dine Hub Team</p>
       </div>
     `
   };

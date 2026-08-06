@@ -84,15 +84,15 @@ const transporter = {
             console.log(`[Email] Email sent successfully via Resend to ${mailOptions.to}.`);
             if (callback) callback(null, { response: 'Resend HTTP 200 OK' });
           } else {
-            console.error(`[Email] Resend HTTP Error ${res.statusCode}:`, body);
-            if (callback) callback(new Error(`Resend Error: ${body}`), null);
+            console.error(`[Email] Resend HTTP Error ${res.statusCode}:`, body, "Falling back to Gmail SMTP...");
+            nodemailerTransporter.sendMail(mailOptions, callback);
           }
         });
       });
 
       req.on('error', (e) => {
-        console.error('[Email] Resend connection failed:', e);
-        if (callback) callback(e, null);
+        console.error('[Email] Resend connection failed, falling back to Gmail SMTP:', e);
+        nodemailerTransporter.sendMail(mailOptions, callback);
       });
 
       req.write(postData);
@@ -642,11 +642,29 @@ router.post('/verify', async (req, res) => {
     if (isNewBookingPayment) {
       try {
         const coverChargeId = `CC-${Math.floor(100000 + Math.random() * 900000)}`;
+        const Customer = require('../models/Customer');
+        const emailVal = booking.guest_email ? booking.guest_email.toLowerCase() : '';
+        let resolvedPhone = booking.guest_phone;
+        if (!resolvedPhone) {
+          const dbCustomer = await Customer.findOne({ 
+            $or: [
+              ...(emailVal ? [{ email: emailVal }] : []),
+              { name: booking.guest }
+            ]
+          });
+          if (dbCustomer && dbCustomer.phone_number) {
+            resolvedPhone = dbCustomer.phone_number;
+          }
+        }
+        if (!resolvedPhone) {
+          resolvedPhone = `+91 ${Math.floor(6000000000 + Math.random() * 4000000000)}`;
+        }
+
         await CoverCharge.create({
           id: coverChargeId,
           booking_id: booking.id,
           customer_name: booking.guest,
-          customer_phone: booking.guest_phone || `+91 ${Math.floor(6000000000 + Math.random() * 4000000000)}`,
+          customer_phone: resolvedPhone,
           restaurant_name: booking.restaurant_name,
           guests: booking.guests,
           amount: booking.cover_charge || booking.amount,
@@ -695,37 +713,70 @@ router.post('/verify', async (req, res) => {
         const guestMailOptions = {
           from: `"bookmydineout" <${process.env.SMTP_USER}>`,
           to: booking.guest_email,
-          subject: `your booking for this restro at this time have beign conformed thankyou for booking through bookmydineout`,
-          text: `Hello ${booking.guest},\n\nyour booking for this restro at this time have beign conformed thankyou for booking through bookmydineout\n\nReservation Details:\n- Restaurant: ${booking.restaurant_name}\n- Date & Time: ${booking.booking_time}\n- Guests: ${booking.guests} Guests\n\nPayment Details:\n- Total Amount Paid: ₹${(booking.amount / 100).toFixed(2)}\n\nWe look forward to hosting you!\n\nHappy Dining,\nThe bookmydineout Team`,
+          subject: `Booking Confirmed! 🎉 Your reservation at ${booking.restaurant_name} is all set.`,
+          text: `Hello ${booking.guest},\n\nYour table reservation at ${booking.restaurant_name} has been successfully confirmed. We look forward to hosting you!\n\nReservation Details:\n- Restaurant: ${booking.restaurant_name}\n- Date & Time: ${booking.booking_time}\n- Guests: ${booking.guests} Guests\n\nPayment Details:\n- Total Amount Paid: ₹${(booking.amount / 100).toFixed(2)}\n- Payment ID: ${razorpay_payment_id}\n\nThank you for choosing bookmydineout.\n\nHappy Dining,\nThe bookmydineout Team`,
           html: `
-            <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
-              <h2 style="color: #FC8019; text-align: center; margin-bottom: 20px;">Booking Confirmed! 🎉</h2>
-              <p>Hello <strong>${booking.guest}</strong>,</p>
-              <p style="font-size: 15px; line-height: 1.6; color: #2E1B10;">your booking for this restro at this time have beign conformed thankyou for booking through bookmydineout</p>
-              
-              <div style="background-color: #FFF5EC; border: 1px solid #FFD8BA; border-radius: 8px; padding: 15px; margin: 20px 0;">
-                <h3 style="margin-top: 0; color: #7C2D12; font-size: 15px;">Reservation Details:</h3>
-                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
-                  <tr>
-                    <td style="padding: 6px 0; font-weight: bold; width: 120px; color: #666;">Restaurant:</td>
-                    <td style="padding: 6px 0; font-weight: bold; color: #111;">${booking.restaurant_name}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 6px 0; font-weight: bold; color: #666;">Date & Time:</td>
-                    <td style="padding: 6px 0; color: #FC8019; font-weight: bold;">${booking.booking_time}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 6px 0; font-weight: bold; color: #666;">Guests:</td>
-                    <td style="padding: 6px 0; color: #111;">${booking.guests} Guests</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 6px 0; font-weight: bold; color: #666;">Payment ID:</td>
-                    <td style="padding: 6px 0; font-family: monospace; color: #111;">${razorpay_payment_id}</td>
-                  </tr>
-                </table>
+            <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #F8FAFC; padding: 40px 20px; text-align: center;">
+              <div style="max-width: 580px; margin: 0 auto; background-color: #FFFFFF; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); border: 1px solid #E2E8F0; text-align: left;">
+                <!-- Brand Header -->
+                <div style="background: linear-gradient(135deg, #FC8019 0%, #FF5722 100%); padding: 30px; text-align: center;">
+                  <h1 style="color: #FFFFFF; font-size: 24px; font-weight: 800; margin: 0; letter-spacing: -0.5px;">Booking Confirmed! 🎉</h1>
+                  <p style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin: 8px 0 0 0;">Your table at ${booking.restaurant_name} is all set.</p>
+                </div>
+
+                <!-- Body -->
+                <div style="padding: 30px 40px;">
+                  <p style="font-size: 16px; color: #1E293B; line-height: 1.5; margin: 0 0 20px 0;">Hello <strong>${booking.guest}</strong>,</p>
+                  <p style="font-size: 15px; color: #475569; line-height: 1.6; margin: 0 0 24px 0;">
+                    Great news! Your booking has been successfully confirmed at <strong>${booking.restaurant_name}</strong>. We look forward to hosting you for an incredible dining experience!
+                  </p>
+
+                  <!-- Details Card -->
+                  <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px; margin: 0 0 24px 0;">
+                    <h3 style="color: #0F172A; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 16px 0; border-bottom: 1px solid #E2E8F0; padding-bottom: 8px;">
+                      Reservation Details
+                    </h3>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                      <tr>
+                        <td style="padding: 8px 0; font-weight: 600; color: #64748B; width: 120px;">Restaurant:</td>
+                        <td style="padding: 8px 0; font-weight: 700; color: #0F172A;">${booking.restaurant_name}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 8px 0; font-weight: 600; color: #64748B;">Date & Time:</td>
+                        <td style="padding: 8px 0; font-weight: 700; color: #FC8019;">${booking.booking_time}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 8px 0; font-weight: 600; color: #64748B;">Guests:</td>
+                        <td style="padding: 8px 0; color: #0F172A; font-weight: 600;">${booking.guests} Guests</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 8px 0; font-weight: 600; color: #64748B;">Payment Status:</td>
+                        <td style="padding: 8px 0; color: #10B981; font-weight: 700;">Paid (₹${(booking.amount / 100).toFixed(2)})</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 8px 0; font-weight: 600; color: #64748B;">Payment ID:</td>
+                        <td style="padding: 8px 0; font-family: monospace; color: #475569; font-size: 12px;">${razorpay_payment_id}</td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div style="text-align: center; margin: 30px 0 10px 0;">
+                    <p style="font-size: 14px; color: #64748B; line-height: 1.5; margin: 0;">
+                      Need to make changes? Open the <strong>Dine Hub</strong> app to manage your reservations.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Footer -->
+                <div style="background-color: #F8FAFC; border-top: 1px solid #F1F5F9; padding: 24px 30px; text-align: center;">
+                  <p style="font-size: 13px; color: #94A3B8; margin: 0;">
+                    Thank you for choosing <strong>bookmydineout</strong>!
+                  </p>
+                  <p style="font-size: 12px; color: #94A3B8; margin: 4px 0 0 0;">
+                    Happy Dining,<br/>The bookmydineout Team
+                  </p>
+                </div>
               </div>
-              <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
-              <p style="font-size: 12px; color: #999; text-align: center;">Happy Dining,<br/>The bookmydineout Team</p>
             </div>
           `
         };
